@@ -8,7 +8,7 @@ class Root extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      notes: Util.major
+      notes: Util.none
     };
     this.handleClick = this.handleClick.bind(this);
   }

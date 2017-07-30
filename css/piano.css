@@ -1,6 +1,10 @@
+button {
+  outline: none;
+}
+
 .piano-keys {
   width: 880px;
-  margin-top: 400px;
+  margin-top: 350px;
 }
 
 .piano-key {
@@ -11,31 +15,31 @@
 .white {
   background: #fff;
   display: inline-block;
-  width: 80px;
-  height: 400px;
+  width: 60px;
+  height: 300px;
   border: 2px solid #aaa;
   z-index: 0;
 }
 
-.d, .e, .g, .a, .b {
-  margin-left: -25px;
+.D, .E, .G, .A, .B {
+  margin-left: -15px;
 }
 
 .black {
   background: #000;
   display: inline-block;
-  width: 50px;
-  height: 200px;
+  width: 30px;
+  height: 180px;
   z-index: 2;
-  margin-left: -25px;
+  margin-left: -15px;
 }
 
 .white.in-key {
-  background-color: #0af;
+  background-color: #8bf;
   border: 2px solid #a00;
 }
 
 .black.in-key {
-  background-color: #a0f;
+  background-color: #b8f;
   border: 3px solid #00a;
 }
