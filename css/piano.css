@@ -1,0 +1,41 @@
+.piano-keys {
+  width: 880px;
+  margin-top: 400px;
+}
+
+.piano-key {
+  float: left;
+  position: relative;
+}
+
+.white {
+  background: #fff;
+  display: inline-block;
+  width: 80px;
+  height: 400px;
+  border: 2px solid #aaa;
+  z-index: 0;
+}
+
+.d, .e, .g, .a, .b {
+  margin-left: -25px;
+}
+
+.black {
+  background: #000;
+  display: inline-block;
+  width: 50px;
+  height: 200px;
+  z-index: 2;
+  margin-left: -25px;
+}
+
+.white.in-key {
+  background-color: #0af;
+  border: 2px solid #a00;
+}
+
+.black.in-key {
+  background-color: #a0f;
+  border: 3px solid #00a;
+}
