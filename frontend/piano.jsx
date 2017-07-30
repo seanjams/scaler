@@ -2,12 +2,13 @@ import React from 'react';
 import * as Util from './util';
 
 class Piano extends React.Component {
-
   renderKeys() {
     const blackKeys = [1,3,6,8,10];
     return this.props.notes.map((note, i) => {
       return (
         <button onClick={() => this.props.handleClick(i)}
+          onKeyDown={this.props.handleKeyDown}
+          onKeyUp={this.props.handleKeyUp}
           key={`piano-key-${i}`}
           className={`
             piano-key
