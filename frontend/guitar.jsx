@@ -16,7 +16,7 @@ class Guitar extends React.Component {
               style={{
                 left: 640 * i / 12 + 26.7
               }}
-              onClick={() => this.props.handleClick(i + noteShift)}>
+              onClick={() => this.props.handleClick((i + noteShift) % 12)}>
       </button>
     ));
   }

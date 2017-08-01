@@ -79,16 +79,6 @@ class Root extends React.Component {
     this.setState({notes: newNotes});
   }
 
-  createOscillator(frequency) {
-    const context = new AudioContext();
-    const oscillator = context.createOscillator();
-    oscillator.type = 'sine'
-    const gain = context.createGain();
-    oscillator.connect(gain);
-    gain.connect(context.destination);
-    return oscillator
-  }
-
   render() {
 
     return (
@@ -98,7 +88,6 @@ class Root extends React.Component {
                handleKeyDown={this.handleKeyDown}
                handleClick={this.handleClick}/>
         <Clock notes={this.state.notes} handleClick={this.handleClick}/>
-
         <Guitar notes={this.state.notes}
                handleKeyUp={this.handleKeyUp}
                handleKeyDown={this.handleKeyDown}
