@@ -4,7 +4,7 @@ button {
 
 .piano-keys {
   width: 880px;
-  margin-top: 350px;
+  display: inline-block;
 }
 
 .piano-key {

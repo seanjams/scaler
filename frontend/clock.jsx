@@ -4,7 +4,7 @@ import * as Util from './util';
 class Clock extends React.Component {
 
   renderNotes() {
-    const center = { x: 414, y: 150 };
+    const center = { x: 614, y: 150 };
     const scaleRadius = 100;
     const noteRadius = 30;
     return this.props.notes.map((note, i) => (

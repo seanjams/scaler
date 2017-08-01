@@ -1,0 +1,27 @@
+.fretboard {
+  display: inline-block;
+  width: 880px;
+  height: 180px;
+  background: #eb6;
+  margin-top: 50px;
+}
+
+.string {
+  height: 30px;
+  width: 880px;
+}
+
+.fret {
+  position: relative;
+  top: 5px;
+  width: 20px;
+  height: 20px;
+  border: 1px solid #999;
+  background: transparent;
+  border-radius: 20px;
+}
+
+
+.fret.in-key {
+  background-color: red;
+}
