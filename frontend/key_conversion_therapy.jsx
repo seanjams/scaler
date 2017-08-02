@@ -19,17 +19,17 @@ class Root extends React.Component {
   }
 
   componentDidMount() {
-    const { noteNames, frequencies } = Util;
+    const { pianoKeyNames, frequencies } = Util;
     const context = new AudioContext();
     const gains = [];
-    const oscillators = noteNames.map((name) => {
+    const oscillators = pianoKeyNames.map((name) => {
       let nextEl = context.createOscillator();
       let nextGain = context.createGain();
       nextEl.connect(nextGain);
       nextGain.connect(context.destination);
       nextGain.gain.value = 0;
       gains.push(nextGain);
-      nextEl.frequency.value = frequencies[`${name}4`];
+      nextEl.frequency.value = frequencies[name];
       nextEl.type = 'sine';
       nextEl.start(0);
       return nextEl;
@@ -45,7 +45,7 @@ class Root extends React.Component {
     const newGains = [...this.state.gains];
     const idx = Util.keyMap[e.keyCode];
     if (idx || idx === 0) {
-      newNotes[idx] = true;
+      newNotes[idx % 12] = true;
       const { context } = newGains[idx];
       newGains[idx].gain
         .linearRampToValueAtTime(1, context.currentTime + 0.2);
@@ -62,7 +62,7 @@ class Root extends React.Component {
     const newGains = [...this.state.gains];
     const idx = Util.keyMap[e.keyCode];
     if (idx || idx === 0) {
-      newNotes[idx] = false;
+      newNotes[idx % 12] = false;
       const { context } = newGains[idx];
       newGains[idx].gain
         .linearRampToValueAtTime(0, context.currentTime + 0.2);
@@ -75,7 +75,7 @@ class Root extends React.Component {
 
   handleClick(i) {
     const newNotes = [...this.state.notes];
-    newNotes[i] = !this.state.notes[i];
+    newNotes[i % 12] = !this.state.notes[i % 12];
     this.setState({notes: newNotes});
   }
 
@@ -83,15 +83,20 @@ class Root extends React.Component {
 
     return (
       <div>
-        <Piano notes={this.state.notes}
-               handleKeyUp={this.handleKeyUp}
-               handleKeyDown={this.handleKeyDown}
-               handleClick={this.handleClick}/>
-        <Clock notes={this.state.notes} handleClick={this.handleClick}/>
         <Guitar notes={this.state.notes}
-               handleKeyUp={this.handleKeyUp}
-               handleKeyDown={this.handleKeyDown}
-               handleClick={this.handleClick}/>
+                handleKeyUp={this.handleKeyUp}
+                handleKeyDown={this.handleKeyDown}
+                handleClick={this.handleClick}/>
+              <div className="piano-clock-container">
+          <Piano notes={this.state.notes}
+                 handleKeyUp={this.handleKeyUp}
+                 handleKeyDown={this.handleKeyDown}
+                 handleClick={this.handleClick}/>
+          <Clock notes={this.state.notes}
+                 handleClick={this.handleClick}
+                 handleKeyUp={this.handleKeyUp}
+                 handleKeyDown={this.handleKeyDown}/>
+        </div>
       </div>
     );
   }

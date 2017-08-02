@@ -57,22 +57,42 @@ export const keyMap = {
   72: 8,
   78: 9,
   74: 10,
-  77: 11
+  77: 11,
+  188: 12,
+  76: 13,
+  190: 14,
+  186: 15,
+  191: 16
 };
 
+export const pianoKeyNames = [
+  "C4",
+  "C#4",
+  "D4",
+  "D#4",
+  "E4",
+  "F4",
+  "F#4",
+  "G4",
+  "G#4",
+  "A4",
+  "A#4",
+  "B4",
+  "C5",
+  "C#5",
+  "D5",
+  "D#5",
+  "E5"
+  // "F5",
+  // "F#5",
+  // "G5",
+  // "G#5",
+  // "A5",
+  // "A#5",
+  // "B5"
+];
+
 export const frequencies = {
-  // "C3": new Octavian.Note("C3").frequency,
-  // "C#3": new Octavian.Note("C#3").frequency,
-  // "D3": new Octavian.Note("D3").frequency,
-  // "D#3": new Octavian.Note("D#3").frequency,
-  // "E3": new Octavian.Note("E3").frequency,
-  // "F3": new Octavian.Note("F3").frequency,
-  // "F#3": new Octavian.Note("F#3").frequency,
-  // "G3": new Octavian.Note("G3").frequency,
-  // "G#3": new Octavian.Note("G#3").frequency,
-  // "A3": new Octavian.Note("A3").frequency,
-  // "A#3": new Octavian.Note("A#3").frequency,
-  // "B3": new Octavian.Note("B3").frequency,
   "C4": new Octavian.Note("C4").frequency,
   "C#4": new Octavian.Note("C#4").frequency,
   "D4": new Octavian.Note("D4").frequency,
@@ -84,5 +104,17 @@ export const frequencies = {
   "G#4": new Octavian.Note("G#4").frequency,
   "A4": new Octavian.Note("A4").frequency,
   "A#4": new Octavian.Note("A#4").frequency,
-  "B4": new Octavian.Note("B4").frequency
+  "B4": new Octavian.Note("B4").frequency,
+  "C5": new Octavian.Note("C5").frequency,
+  "C#5": new Octavian.Note("C#5").frequency,
+  "D5": new Octavian.Note("D5").frequency,
+  "D#5": new Octavian.Note("D#5").frequency,
+  "E5": new Octavian.Note("E5").frequency
+  // "F5": new Octavian.Note("F5").frequency,
+  // "F#5": new Octavian.Note("F#5").frequency,
+  // "G5": new Octavian.Note("G5").frequency,
+  // "G#5": new Octavian.Note("G#5").frequency,
+  // "A5": new Octavian.Note("A5").frequency,
+  // "A#5": new Octavian.Note("A#5").frequency,
+  // "B5": new Octavian.Note("B5").frequency
 }

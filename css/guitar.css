@@ -1,27 +1,53 @@
-.fretboard {
+.guitar-container {
+  padding: 30px;
+  position: relative;
+  top: 50px;
+  width: 1000px;
+  background-image: url("../images/amp-mesh-guitar.png");
+  margin: auto;
+  border-radius: 40px;
+  /*border-top: 5px solid #666;
+  border-left: 5px solid #666;*/
+  /*border-bottom: 5px solid #aaa;
+  border-right: 5px solid #aaa;*/
+  /*border-style: inset;*/
+  box-shadow: 7px 7px 50px 10px rgba(200,200,200,0.2), inset 0px 0px 50px 30px rgba(0,0,0,100);
+}
+
+.guitar {
+  width: 1000px;
+  height: auto;
   display: inline-block;
-  width: 880px;
-  height: 180px;
-  background: #eb6;
-  margin-top: 50px;
+  background-image: url("../images/guitar-neck.png");
+  background-size: 1000px;
+}
+
+.fretboard {
+  text-align: left;
+  position: relative;
+  width: 600px;
+  left: 400px;
+  padding-top: 65px;
+  padding-bottom: 48px;
 }
 
 .string {
-  height: 30px;
-  width: 880px;
+  height: 15px;
+  width: 660px;
 }
 
 .fret {
   position: relative;
   top: 5px;
-  width: 20px;
-  height: 20px;
-  border: 1px solid #999;
+  width: 13px;
+  height: 13px;
+  border: 1px solid transparent;
   background: transparent;
-  border-radius: 20px;
+  border-radius: 13px;
 }
 
-
 .fret.in-key {
-  background-color: red;
+  -webkit-animation-name: redPulse;
+  -webkit-animation-duration: 0.9s;
+  -webkit-animation-iteration-count: infinite;
 }

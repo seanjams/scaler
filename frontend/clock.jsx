@@ -4,13 +4,15 @@ import * as Util from './util';
 class Clock extends React.Component {
 
   renderNotes() {
-    const center = { x: 614, y: 150 };
+    const center = { x: 185, y: 185 };
     const scaleRadius = 100;
     const noteRadius = 30;
     return this.props.notes.map((note, i) => (
         <button onClick={() => this.props.handleClick(i)}
                 key={`clock-${i}`}
                 className={`note ${note ? "in-key" : ""}`}
+                onKeyDown={this.props.handleKeyDown}
+                onKeyUp={this.props.handleKeyUp}
                 style={{
                   top:
                     center.y - scaleRadius * Math.cos(i * 2 * Math.PI / 12),
@@ -24,7 +26,7 @@ class Clock extends React.Component {
 
   render() {
     return(
-      <div>
+      <div className="clock">
         { this.renderNotes() }
       </div>
     );

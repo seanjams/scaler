@@ -1,3 +1,10 @@
+.clock {
+  display: inline-block;
+  width: 300px;
+  height: 300px;
+  position: relative;
+}
+
 .note {
   background-color: white;
   position: absolute;
@@ -8,5 +15,7 @@
 }
 
 .in-key {
-  background-color: #8df;
+  -webkit-animation-name: bluePulse;
+  -webkit-animation-duration: 0.7s;
+  -webkit-animation-iteration-count: infinite;
 }

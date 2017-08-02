@@ -1,0 +1,30 @@
+#root {
+  text-align: center;
+  background-image: url("../images/black-leather.jpg");
+  background-size: 100%;
+  height: 100vh;
+}
+
+@keyframes bluePulse {
+  from { background-color: #00aaff; box-shadow: 0 0 9px #666; }
+  50% { background-color: #66ccff; box-shadow: 0 0 18px #66ccff; }
+  to { background-color: #00aaff; box-shadow: 0 0 9px #666; }
+}
+
+@keyframes greenPulse {
+  from { background-color: #00cc00; box-shadow: 0 0 9px #666; }
+  50% { background-color: #00e600; box-shadow: 0 0 18px #00e600; }
+  to { background-color: #00cc00; box-shadow: 0 0 9px #666; }
+}
+
+@keyframes darkGreenPulse {
+  from { background-color: #009933; box-shadow: 0 0 9px #666; }
+  50% { background-color: #00ff55; box-shadow: 0 0 18px #33cc33; }
+  to { background-color: #009933; box-shadow: 0 0 9px #666; }
+}
+
+@keyframes redPulse {
+  from { background-color: #e62e00; box-shadow: 0 0 9px #666; }
+  50% { background-color: #ff5c33; box-shadow: 0 0 18px #ff5c33; }
+  to { background-color: #e62e00; box-shadow: 0 0 9px #666; }
+}

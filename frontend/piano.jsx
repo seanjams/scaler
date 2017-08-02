@@ -6,7 +6,8 @@ class Piano extends React.Component {
 
   renderKeys(octave) {
     const blackKeys = [1,3,6,8,10];
-    return this.props.notes.map((note, i) => {
+    const noteWrap = this.props.notes.concat(this.props.notes.slice(0,5));
+    return noteWrap.map((note, i) => {
       return (
         <button onClick={() => this.props.handleClick(i)}
           onKeyDown={this.props.handleKeyDown}
@@ -16,13 +17,12 @@ class Piano extends React.Component {
             `piano-key
             ${blackKeys.includes(i % 12) ? "black" : "white"}
             ${note ? "in-key" : ""}
-            ${Util.noteNames[i]}`}></button>
+            ${Util.noteNames[i % 12]}`}></button>
         );
     });
   }
 
   render() {
-    const { notes } = this.props;
     return(
       <div className="piano-keys">
         { this.renderKeys() }
