@@ -5,7 +5,7 @@
 .piano-keys {
   margin: auto;
   display: inline-block;
-  box-shadow: 7px 7px 50px 10px rgba(200,200,200,0.2), inset 0px 0px 50px 30px rgba(0,0,0,100);
+  box-shadow: 7px 7px 50px 10px rgba(220,220,220,0.2);
   border-top-left-radius: 40px;
   border-top-right-radius: 40px;
 }
@@ -34,7 +34,7 @@
   border-top-right-radius: 40px;
 }
 
-.D, .E, .G, .A, .B {
+.piano-key.D, .piano-key.E, .piano-key.G, .piano-key.A, .piano-key.B {
   margin-left: -15px;
 }
 
@@ -51,13 +51,13 @@
 }
 
 .white.in-key {
-  -webkit-animation-name: greenPulse;
+  -webkit-animation-name: greenPiano;
   -webkit-animation-duration: 1.1s;
   -webkit-animation-iteration-count: infinite;
 }
 
 .black.in-key {
-  -webkit-animation-name: darkGreenPulse;
+  -webkit-animation-name: darkGreenPiano;
   -webkit-animation-duration: 1.1s;
   -webkit-animation-iteration-count: infinite;
 }

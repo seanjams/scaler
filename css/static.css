@@ -1,8 +1,79 @@
+/*blue colors #00aaff #66ccff*/
+/*green colors #00cc00 #00e600*/
+/*dark green colors #009933 #00ff55 #33cc33*/
+/*red colors #e62e00 #ff5c33*/
+/* spectrum
+#df80ff #bf00ff
+#ff66ff #e600e6
+#ff6666 #e60000
+#ffdb4d #e6b800
+*/
+
 #root {
   text-align: center;
   background-image: url("../images/black-leather.jpg");
   background-size: 100%;
   height: 100vh;
+}
+
+@keyframes redPulse {
+  from { background-color: rgb(200,0,0); box-shadow: 0 0 9px #666; }
+  50% { background-color: rgb(255,0,0); box-shadow: 0 0 18px rgb(255,0,0); }
+  to { background-color: rgb(200,0,0); box-shadow: 0 0 9px #666; }
+}
+
+@keyframes orangePulse {
+  from { background-color: rgb(200,100,0); box-shadow: 0 0 9px #666; }
+  50% { background-color: rgb(255,125,0); box-shadow: 0 0 18px rgb(255,125,0); }
+  to { background-color: rgb(200,100,0); box-shadow: 0 0 9px #666; }
+}
+
+@keyframes yellowPulse {
+  from { background-color: rgb(200,200,0); box-shadow: 0 0 9px #666; }
+  50% { background-color: rgb(255,255,0); box-shadow: 0 0 18px rgb(255,255,0); }
+  to { background-color: rgb(200,200,0); box-shadow: 0 0 9px #666; }
+}
+
+@keyframes lightGreenPulse {
+  from { background-color: rgb(100,200,0); box-shadow: 0 0 9px #666; }
+  50% { background-color: rgb(125,255,0); box-shadow: 0 0 18px rgb(125,255,0); }
+  to { background-color: rgb(100,200,0); box-shadow: 0 0 9px #666; }
+}
+
+@keyframes greenPulse {
+  from { background-color: rgb(0,200,0); box-shadow: 0 0 9px #666; }
+  50% { background-color: rgb(0,255,0); box-shadow: 0 0 18px rgb(0,255,0); }
+  to { background-color: rgb(0,200,0); box-shadow: 0 0 9px #666; }
+}
+
+@keyframes greenPiano {
+  from { background-color: #00cc00; box-shadow: 0 0 9px #666, inset 0 0 8px #666; }
+  50% { background-color: #00e600; box-shadow: 0 0 18px #00e600, inset 0 0 8px #666; }
+  to { background-color: #00cc00; box-shadow: 0 0 9px #666, inset 0 0 8px #666; }
+}
+
+@keyframes darkGreenPiano {
+  from { background-color: #009933; box-shadow: 0 0 9px #666, inset 0 0 8px #666; }
+  50% { background-color: #00ff55; box-shadow: 0 0 18px #33cc33, inset 0 0 8px #666; }
+  to { background-color: #009933; box-shadow: 0 0 9px #666, inset 0 0 8px #666; }
+}
+
+@keyframes turquoisePulse {
+  from { background-color: rgb(0,200,100); box-shadow: 0 0 9px #666; }
+  50% { background-color: rgb(0,255,125); box-shadow: 0 0 18px rgb(0,255,125); }
+  to { background-color: rgb(0,200,100); box-shadow: 0 0 9px #666; }
+}
+
+@keyframes cyanPulse {
+  from { background-color: rgb(0,200,200); box-shadow: 0 0 9px #666; }
+  50% { background-color: rgb(0,255,255); box-shadow: 0 0 18px rgb(0,255,255); }
+  to { background-color: rgb(0,200,200); box-shadow: 0 0 9px #666; }
+}
+
+@keyframes oceanPulse {
+  from { background-color: rgb(0,100,200); box-shadow: 0 0 9px #666; }
+  50% { background-color: rgb(0,125,255); box-shadow: 0 0 18px rgb(0,125,255); }
+  to { background-color: rgb(0,100,200); box-shadow: 0 0 9px #666; }
 }
 
 @keyframes bluePulse {
@@ -11,20 +82,26 @@
   to { background-color: #00aaff; box-shadow: 0 0 9px #666; }
 }
 
-@keyframes greenPulse {
-  from { background-color: #00cc00; box-shadow: 0 0 9px #666; }
-  50% { background-color: #00e600; box-shadow: 0 0 18px #00e600; }
-  to { background-color: #00cc00; box-shadow: 0 0 9px #666; }
+/*@keyframes bluePulse {
+  from { background-color: rgb(0,0,200); box-shadow: 0 0 9px #666; }
+  50% { background-color: rgb(0,0,255); box-shadow: 0 0 18px rgb(0,0,255); }
+  to { background-color: rgb(0,0,200); box-shadow: 0 0 9px #666; }
+}*/
+
+@keyframes violetPulse {
+  from { background-color: rgb(100,0,200); box-shadow: 0 0 9px #666; }
+  50% { background-color: rgb(125,0,255); box-shadow: 0 0 18px rgb(125,0,255); }
+  to { background-color: rgb(100,0,200); box-shadow: 0 0 9px #666; }
 }
 
-@keyframes darkGreenPulse {
-  from { background-color: #009933; box-shadow: 0 0 9px #666; }
-  50% { background-color: #00ff55; box-shadow: 0 0 18px #33cc33; }
-  to { background-color: #009933; box-shadow: 0 0 9px #666; }
+@keyframes magentaPulse {
+  from { background-color: rgb(255,0,200); box-shadow: 0 0 9px #666; }
+  50% { background-color: rgb(255,0,255); box-shadow: 0 0 18px rgb(255,0,255); }
+  to { background-color: rgb(200,0,200); box-shadow: 0 0 9px #666; }
 }
 
-@keyframes redPulse {
-  from { background-color: #e62e00; box-shadow: 0 0 9px #666; }
-  50% { background-color: #ff5c33; box-shadow: 0 0 18px #ff5c33; }
-  to { background-color: #e62e00; box-shadow: 0 0 9px #666; }
+@keyframes pinkPulse {
+  from { background-color: rgb(200,0,100); box-shadow: 0 0 9px #666; }
+  50% { background-color: rgb(255,0,125); box-shadow: 0 0 18px rgb(255,0,125); }
+  to { background-color: rgb(200,0,100); box-shadow: 0 0 9px #666; }
 }

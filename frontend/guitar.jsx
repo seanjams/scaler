@@ -3,24 +3,36 @@ import * as Util from './util';
 
 class Guitar extends React.Component {
 
+  handleClick(i) {
+    const { notes } = this.props;
+    if (i < 5 && notes[i] && !notes[i+12]) {
+      return this.props.handleClick(i+12);
+    } else if (notes[i] && notes[i+12]) {
+      return this.props.handleClick(i, i+12);
+    }
+    return this.props.handleClick(i);
+  }
+
   renderFrets(stringName, n) {
-    // To adjust notes, change noteShift in for loop and onClick
     const noteShift = Util.noteNames.indexOf(stringName);
-    const newNotes = [...this.props.notes];
+    const newNotes = this.props.notes.slice(0,12);
+    this.props.notes.slice(12).forEach((note, i) => (
+      newNotes[i] = newNotes[i] || note
+    ));
     for (let i = 0; i <= noteShift; i++) {
       let temp = newNotes.shift();
       newNotes.push(temp);
     }
-    // top:  (n - 2.5)/i
     return newNotes.map((note, i) => (
-      <button key={`fret-${i}`}
-              className={`fret ${note ? "in-key" : ""}`}
-              style={{
-                left: -1.55 * i * i + 645 * i / 12,
-                top: i * (n - 2.5) / 4.20
-              }}
-              onClick={() => this.props.handleClick((i + noteShift + 1) % 12)}>
-      </button>
+        <button key={`fret-${i}`}
+                className={`fret ${note ? "in-key" : ""} ${Util.noteNames[i + noteShift]}`}
+                style={{
+                  left: -31 * i * i / 20 + 645 * i / 12,
+                  top: i * (n - 2.5) / 4.20
+                }}
+
+                onClick={() => this.handleClick((i + 1 + noteShift) % 12)}>
+        </button>
     ));
   }
 
@@ -28,7 +40,7 @@ class Guitar extends React.Component {
     const strings = ["E", "B", "G", "D", "A", "E"];
 
     return strings.map((string, i) => (
-      <div className="string"
+      <div className={`string string-${i}`}
            key={`string-${i}`}>
         { this.renderFrets(string, i) }
       </div>

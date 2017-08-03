@@ -3,15 +3,14 @@
   position: relative;
   top: 50px;
   width: 1000px;
-  background-image: url("../images/amp-mesh-guitar.png");
+  background-image: url("../images/amp-mesh-guitar2.png");
+
   margin: auto;
   border-radius: 40px;
-  /*border-top: 5px solid #666;
-  border-left: 5px solid #666;*/
-  /*border-bottom: 5px solid #aaa;
-  border-right: 5px solid #aaa;*/
+  border: 10px solid #0c0c0c;
   /*border-style: inset;*/
-  box-shadow: 7px 7px 50px 10px rgba(200,200,200,0.2), inset 0px 0px 50px 30px rgba(0,0,0,100);
+  box-shadow: 0 0 50px 25px rgba(3,3,3,100), inset 0 0 22px 8px rgba(3,3,3,100);
+  /*box-shadow: inset 0px 0px 30px 15px rgba(0,0,0,100);*/
 }
 
 .guitar {
@@ -36,6 +35,78 @@
   width: 660px;
 }
 
+.fret.in-key.C {
+  -webkit-animation-name: redPulse;
+  -webkit-animation-duration: 0.9s;
+  -webkit-animation-iteration-count: infinite;
+}
+
+.fret.in-key.Db {
+  -webkit-animation-name: orangePulse;
+  -webkit-animation-duration: 0.9s;
+  -webkit-animation-iteration-count: infinite;
+}
+
+.fret.in-key.D {
+  -webkit-animation-name: yellowPulse;
+  -webkit-animation-duration: 0.9s;
+  -webkit-animation-iteration-count: infinite;
+}
+
+.fret.in-key.Eb {
+  -webkit-animation-name: lightGreenPulse;
+  -webkit-animation-duration: 0.9s;
+  -webkit-animation-iteration-count: infinite;
+}
+
+.fret.in-key.E {
+  -webkit-animation-name: greenPulse;
+  -webkit-animation-duration: 0.9s;
+  -webkit-animation-iteration-count: infinite;
+}
+
+.fret.in-key.F {
+  -webkit-animation-name: turquoisePulse;
+  -webkit-animation-duration: 0.9s;
+  -webkit-animation-iteration-count: infinite;
+}
+
+.fret.in-key.Gb {
+  -webkit-animation-name: cyanPulse;
+  -webkit-animation-duration: 0.9s;
+  -webkit-animation-iteration-count: infinite;
+}
+
+.fret.in-key.G {
+  -webkit-animation-name: oceanPulse;
+  -webkit-animation-duration: 0.9s;
+  -webkit-animation-iteration-count: infinite;
+}
+
+.fret.in-key.Ab{
+  -webkit-animation-name: bluePulse;
+  -webkit-animation-duration: 0.9s;
+  -webkit-animation-iteration-count: infinite;
+}
+
+.fret.in-key.A {
+  -webkit-animation-name: violetPulse;
+  -webkit-animation-duration: 0.9s;
+  -webkit-animation-iteration-count: infinite;
+}
+
+.fret.in-key.Bb {
+  -webkit-animation-name: magentaPulse;
+  -webkit-animation-duration: 0.9s;
+  -webkit-animation-iteration-count: infinite;
+}
+
+.fret.in-key.B {
+  -webkit-animation-name: pinkPulse;
+  -webkit-animation-duration: 0.9s;
+  -webkit-animation-iteration-count: infinite;
+}
+
 .fret {
   position: relative;
   top: 5px;
@@ -46,8 +117,10 @@
   border-radius: 13px;
 }
 
-.fret.in-key {
+/*.fret.in-key {
   -webkit-animation-name: redPulse;
   -webkit-animation-duration: 0.9s;
   -webkit-animation-iteration-count: infinite;
-}
+}*/
+
+/*Here we can use the noteName class and set different notes to different colors*/
