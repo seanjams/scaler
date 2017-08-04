@@ -51,7 +51,7 @@ class Root extends React.Component {
         setTimeout(() => this.changeSound(i-1, 0), 200);
         window.clearInterval(interval);
       }
-    }, 150);
+    }, 180);
 
   }
 
@@ -103,10 +103,15 @@ class Root extends React.Component {
     return (
       <div>
       <span className="title">
-        <h1>Key Conversion Therapy</h1>
-        <a href="https://github.com/seanjams/KeyConversionTherapy">
-          <i id="github-icon" className="fa fa-github-square" aria-hidden="true"></i>
-        </a>
+        <h1>Scalar</h1>
+        <span className="links">
+          <a href="https://github.com/seanjams/Scalar">
+            <i id="github-icon" className="fa fa-github-square" aria-hidden="true"></i>
+          </a>
+          <a href="#">
+            <i id="linkedin-icon" className="fa fa-linkedin-square" aria-hidden="true"></i>
+          </a>
+        </span>
       </span>
         <Guitar notes={this.state.notes}
                 handleKeyUp={this.handleKeyUp}

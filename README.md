@@ -1,71 +1,39 @@
 # Scalar
 
-Scalar is a web application built in Javascript/React where guitarists
+Scalar is a web application built in Javascript/React where guitarists and pianists can both hear and visualize musical notes, chords and scales on each instrument simultaneously.
 
 ## Features
 
-- Authentication on both ends
-- Ask/Search for questions in plain text or code
-- Answer questions with plain text or code
-- Code snippet form complete with syntax highlighting
-- Vote up or down on questions and answers of other users
-- Organize questions into most recent or trending categories
+- Interactive piano, guitar neck, and note selector that allows users to click on notes they want to see
+- Notes hues are assigned according to the circle of fifths, which makes "close" notes be "close" in color
+- Keyboard sounds built with Web Audio API oscillators
 
 ## Programming Languages
 - JavaScript (es6)
-- Ruby
 
 ### Technologies
-- Ruby on Rails (version 5.0.4)
 - React.js
-- Redux
-- PostgreSQL
-- React Highlight (highlight.js)
-- jQuery
-- jBuilder
-- SASS
+- Web Audio API
+- Octavian.js
 
-### Authentication
+### Complete Interactivity
 
-Users are prompted with a form containing fields for Username, Email, and Password. If a user has visited before, they can log in with either their username or email in the same field. The password must be at least 8 characters, and is stored in the database as a salted/hashed digest using BCrypt. Salting prevents the database from containing the same random string as a digest, despite users potentially having the same passwords.
+Click around, build your own scales. Know a song on piano? Figure out the guitar chords or vice versa!
 
-![login](/app/assets/images/login.png)
+![click_demo](/app/assets/images/click_demo.gif)
 
+### Hear your Scales
 
-### Ask a Question
+Use the keyboard to hear each note and interval with We Audio API oscillators.
 
-Ask a question, see if others can help!
-
-![question](/app/assets/images/new_question.png)
-
-### Search for a Question
-
-Search the database for keywords or code.
-
-![search](/app/assets/images/search.png)
-
-### Answer Questions
-
-Answer a question to help someone else in the community.
-
-![answer](/app/assets/images/new_answer.png)
-
-### Vote on Questions/Answers
-
-Vote on the questions and answers you find helpful.
-
-![votes](/app/assets/images/votes.png)
+![keys_demo](/app/assets/images/keys_demo.gif)
 
 ## In the making...
 
-#### Languages
+#### Text Info
 
-I am working on including syntax highlighting for all common languages.
+I am working on generating text information pertaining to each selection of notes. If a user has selected multiple notes, this widget will display what chords or scales can be made from them.
 
-#### User Questions/Page
+#### Key Wheel
 
-I plan to have a page every user can call their own, a page that hosts details about their bio, a user picture, and the questions and answers they have written or voted on.
-
-#### Infinite Scroll
-
-I would like to add this capability to both the questions index and detail pages.
+I am also working on a visual network of musical "keys" (groups of seven notes). This network will function similar to the guitar fretboard, and nodes will become active based on the total inclusion of user-selected notes in that key.
