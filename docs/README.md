@@ -1,8 +1,8 @@
-## KeyConversionTherapy
+## Scalar
 
 ### Background
 
-The vast majority of music we know and love only contains 12 notes. However, the different layouts chosen to represent these notes on instruments are diverse and numerous. KeyConversionTherapy provides a set of musical widgets for visualizing the layouts of musical notes, chords, and scales, on two of the most common melodic instruments, piano and guitar.
+The vast majority of music we know and love only contains 12 notes. However, the different layouts chosen to represent these notes on instruments are diverse and numerous. Scalar provides a set of musical widgets for visualizing the layouts of musical notes, chords, and scales, on two of the most common melodic instruments, piano and guitar.
 
 ### Functionality & MVP
 
@@ -11,11 +11,11 @@ With this set of musical widgets, users will be able to
 - [x] Visualize the same set of notes on the piano, guitar, and note clock all at once
 - [x] Select these notes by clicking on any of the components
 - [x] Select these notes by using the piano-mapped keyboard
-- [ ] Play the sounds of notes by selecting them on the guitar and piano
+- [x] Play the sounds of notes by selecting them on the guitar and piano
 
 In addition, this project will include:
 
-- [ ] A short live simulation upon start showing which parts of the app are interactive
+- [x] A short live simulation upon start showing which parts of the app are interactive
 - [ ] A production Readme
 
 ### Wireframes

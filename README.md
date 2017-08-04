@@ -1,6 +1,6 @@
-# 
+# Scalar
 
-[](https://nodeitall.herokuapp.com/#/) is a full stack web application inspired by Stack Overflow, in which users can ask and answer tech related questions or share their ideas with others in the  community. The frontend is built on React/Redux with a Ruby on Rails backend. Anyone visiting can search the database of questions. Upon signing up, a user can ask questions, answer questions, and vote up or down other questions and answers. The question and answer forms come complete with syntax highlighting for code snippets.
+Scalar is a web application built in Javascript/React where guitarists
 
 ## Features
 

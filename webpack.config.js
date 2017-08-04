@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = {
   context: __dirname,
-  entry: './frontend/key_conversion_therapy.jsx',
+  entry: './frontend/scalar.jsx',
   output: {
     path: path.resolve(__dirname),
     filename: 'bundle.js'
