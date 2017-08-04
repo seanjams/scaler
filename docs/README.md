@@ -47,19 +47,19 @@ The components will be contained in four respective files, piano.jsx, guitar.jsx
 
 **Day 2**: If Web Audio API is still not up and running, focus on this issue. Then work on info component. Style piano component. Goals for the day:
 
-- [ ] all components make sound
+- [x] all components make sound
 - [x] use gradient and advanced css to style piano keys
 - [ ] write info utility functions and mute button
 
 **Day 3**: Dedicate this day to styling all components, and smoothing transition details. Notes that are selected and making noise should be obviously represented. Goals for the day:
 
 - [x] Piano and guitar are fully styled
-- [ ] Start bonus features if possible
+- [x] Start bonus features if possible
 
 
 **Day 4**: Work on fixing all bugs, console errors, and more style. Finish bonus features if possible.
 
-- [ ] project is presentable and bug-free
+- [x] project is presentable and bug-free
 
 
 
