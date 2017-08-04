@@ -12,8 +12,8 @@ class Root extends React.Component {
       // notes: Util.major.concat(Util.major.slice(0,5)),
       notes: Util.none,
       oscillators: [],
-      gains: [],
-      ready: false
+      gains: []
+      // ready: false
     };
     this.handleClick = this.handleClick.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
@@ -46,7 +46,7 @@ class Root extends React.Component {
     let i = 0;
     const interval = setInterval(() => {
       i > 0 ? this.changeSound(i-1, 0): null;
-      this.changeSound(i, 0.7);
+      this.changeSound(i, 0.3);
       if (++i === 12) {
         setTimeout(() => this.changeSound(i-1, 0), 200);
         window.clearInterval(interval);
@@ -64,37 +64,26 @@ class Root extends React.Component {
     this.setState({notes, gains});
   }
 
+  // toggleMute() {
+  //   const { gains } = this.state;
+  //   this.state.notes.forEach((note, i) => {
+  //     this.changeSound()
+  //   });
+  // }
+
   handleKeyDown(e) {
     e.preventDefault();
-    const newNotes = [...this.state.notes];
-    const newGains = [...this.state.gains];
-    let idx = Util.keyMap[e.key];
+    let idx = Util.keyMap.indexOf(e.key);
     if (idx || idx === 0) {
-      newNotes[idx] = true;
-      const { context } = newGains[idx];
-      newGains[idx].gain
-        .linearRampToValueAtTime(0.7, context.currentTime + 0.2);
-      this.setState({
-        notes: newNotes,
-        gains: newGains
-      });
+      this.changeSound(idx, 0.3);
     }
   }
 
   handleKeyUp(e) {
     e.preventDefault();
-    const newNotes = [...this.state.notes];
-    const newGains = [...this.state.gains];
-    let idx = Util.keyMap[e.key];
+    let idx = Util.keyMap.indexOf(e.key);
     if (idx || idx === 0) {
-      newNotes[idx] = false;
-      const { context } = newGains[idx];
-      newGains[idx].gain
-        .linearRampToValueAtTime(0, context.currentTime + 0.2);
-      this.setState({
-        notes: newNotes,
-        gains: newGains
-      });
+      this.changeSound(idx, 0);
     }
   }
 
@@ -108,11 +97,17 @@ class Root extends React.Component {
   }
 
 // add click disabling in return perhaps
+//add mute!!
 
   render() {
     return (
       <div>
+      <span className="title">
         <h1>Key Conversion Therapy</h1>
+        <a href="https://github.com/seanjams/KeyConversionTherapy">
+          <i id="github-icon" className="fa fa-github-square" aria-hidden="true"></i>
+        </a>
+      </span>
         <Guitar notes={this.state.notes}
                 handleKeyUp={this.handleKeyUp}
                 handleKeyDown={this.handleKeyDown}

@@ -1,70 +1,71 @@
-## KeyConversionTherapy
+# 
 
-### Background
+[](https://nodeitall.herokuapp.com/#/) is a full stack web application inspired by Stack Overflow, in which users can ask and answer tech related questions or share their ideas with others in the  community. The frontend is built on React/Redux with a Ruby on Rails backend. Anyone visiting can search the database of questions. Upon signing up, a user can ask questions, answer questions, and vote up or down other questions and answers. The question and answer forms come complete with syntax highlighting for code snippets.
 
-The vast majority of music we know and love only contains 12 notes. However, the different layouts chosen to represent these notes on instruments are diverse and numerous. KeyConversionTherapy provides a set of musical widgets for visualizing the layouts of musical notes, chords, and scales, on two of the most common melodic instruments, piano and guitar.
+## Features
 
-### Functionality & MVP
+- Authentication on both ends
+- Ask/Search for questions in plain text or code
+- Answer questions with plain text or code
+- Code snippet form complete with syntax highlighting
+- Vote up or down on questions and answers of other users
+- Organize questions into most recent or trending categories
 
-With this set of musical widgets, users will be able to
+## Programming Languages
+- JavaScript (es6)
+- Ruby
 
-- [x] Visualize the same set of notes on the piano, guitar, and note clock all at once
-- [x] Select these notes by clicking on any of the components
-- [x] Select these notes by using the piano-mapped keyboard
-- [ ] Play the sounds of notes by selecting them on the guitar and piano
+### Technologies
+- Ruby on Rails (version 5.0.4)
+- React.js
+- Redux
+- PostgreSQL
+- React Highlight (highlight.js)
+- jQuery
+- jBuilder
+- SASS
 
-In addition, this project will include:
+### Authentication
 
-- [ ] A short live simulation upon start showing which parts of the app are interactive
-- [ ] A production Readme
+Users are prompted with a form containing fields for Username, Email, and Password. If a user has visited before, they can log in with either their username or email in the same field. The password must be at least 8 characters, and is stored in the database as a salted/hashed digest using BCrypt. Salting prevents the database from containing the same random string as a digest, despite users potentially having the same passwords.
 
-### Wireframes
-
-This will be a single page app that will be divided into 3 sections. the piano component at the bottom will be fully integrated with sound and click/keyboard ability. The guitar component will sit right above the piano component and display 12 frets of a guitar neck, with click-toggle enabled on every note. To the right of the piano and guitar will be a section containing a "Note Clock" which displays the 12 notes in the natural circular fashion, and click-toggle again enabled on every note. Additionally this section will hold a mute button. Below will be text information pertaining to which notes are selected, and which types of keys/modes the selected notes match. Interacting with any of the components changes the state in all 3 sections.
-
-![wireframes](images/wireframe.png)
-
-### Architecture, Technologies
-
-This project will be implemented with the following technologies
-
-- Vanilla JS for key logic
-- React for component rendering
-- Tone.js for making sounds
-- Webpack to bundle the scripts
-
-The components will be contained in four respective files, piano.jsx, guitar.jsx, clock.jsx, and info.jsx. Each component, upon interaction, will handle the selection of notes by altering an array of booleans serving as the local state of the root component. Additionally, these components will trigger sounds from Tone.js.
-
-### Implementation Timeline
-
-**Day 0**: Setup all necessary node modules, get webpack up and running, update webpack.config.js and package.json. Write entry file containing Clock component and render a basic version. Explore Tone.js. Goals for the day:
-- [x] get pixels on screen
-- [x] get piano on screen and interactive
-
-**Day 1**: Explore and read docs for Web Audio API. Get guitar fretboard up and functional. Goals for the day:
-- [x] learn how to make sounds with Web Audio API
-- [x] guitar fretboard is clickable
-
-**Day 2**: If Web Audio API is still not up and running, focus on this issue. Then work on info component. Style piano component. Goals for the day:
-
-- [ ] all components make sound
-- [x] use gradient and advanced css to style piano keys
-- [ ] write info utility functions and mute button
-
-**Day 3**: Dedicate this day to styling all components, and smoothing transition details. Notes that are selected and making noise should be obviously represented. Goals for the day:
-
-- [x] Piano and guitar are fully styled
-- [ ] Start bonus features if possible
+![login](/app/assets/images/login.png)
 
 
-**Day 4**: Work on fixing all bugs, console errors, and more style. Finish bonus features if possible.
+### Ask a Question
 
-- [ ] project is presentable and bug-free
+Ask a question, see if others can help!
 
+![question](/app/assets/images/new_question.png)
 
+### Search for a Question
 
-### Bonus Features
+Search the database for keywords or code.
 
-1) I hope to have enough time to include "Key Wheel" component. This was the subject of my mathematical research at UC Davis, and would give the user information about which scales contain the selected notes
+![search](/app/assets/images/search.png)
 
-2) Additionally, I hope to have a search bar that enables a user to search for scales, chords, and individual notes
+### Answer Questions
+
+Answer a question to help someone else in the community.
+
+![answer](/app/assets/images/new_answer.png)
+
+### Vote on Questions/Answers
+
+Vote on the questions and answers you find helpful.
+
+![votes](/app/assets/images/votes.png)
+
+## In the making...
+
+#### Languages
+
+I am working on including syntax highlighting for all common languages.
+
+#### User Questions/Page
+
+I plan to have a page every user can call their own, a page that hosts details about their bio, a user picture, and the questions and answers they have written or voted on.
+
+#### Infinite Scroll
+
+I would like to add this capability to both the questions index and detail pages.

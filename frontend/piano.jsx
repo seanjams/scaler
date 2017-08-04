@@ -15,8 +15,10 @@ class Piano extends React.Component {
           className={`piano-key
             ${blackKeys.includes(i % 12) ? "black" : "white"}
             ${note ? "in-key" : ""}
-            ${Util.noteNames[i % 12]}`}></button>
-        );
+            ${Util.noteNames[i % 12]}`}>
+          <p>{Util.keyMap[i]}</p>    
+        </button>
+      );
     });
   }
 

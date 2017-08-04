@@ -16,85 +16,90 @@
   height: 100vh;
 }
 
-h1 {
+.title {
   font-size: 52px;
   color: #ccac00;
   font-family: 'Pacifico', cursive;
   text-shadow: 3px 3px 0px rgba(162,125,25,1), -2px -2px 0px rgba(3,3,3,0.8);
 }
+.title h1 {
+  display: inline-block;
+  margin-right: 200px;
+}
+
 /*rgb(212,175,55)*/
 /*
 :root {
 
 }*/
 
-@keyframes onePulse {
+@keyframes twelvePulse {
   from { background-color: hsl(120, 80%, 46%); box-shadow: 0 0 9px #666, inset 0 0 8px #333; }
   50% { background-color: hsl(120, 100%, 46%); box-shadow: 0 0 18px hsl(120, 100%, 46%), inset 0 0 8px #333; }
   to { background-color: hsl(120, 80%, 46%); box-shadow: 0 0 9px #666, inset 0 0 8px #333; }
 }
 
-@keyframes twoPulse {
+@keyframes fivePulse {
   from { background-color: hsl(125, 80%, 49%); box-shadow: 0 0 9px #666, inset 0 0 8px #333; }
   50% { background-color: hsl(125, 100%, 49%); box-shadow: 0 0 18px hsl(125, 100%, 49%), inset 0 0 8px #333; }
   to { background-color: hsl(125, 80%, 49%); box-shadow: 0 0 9px #666, inset 0 0 8px #333; }
 }
 
-@keyframes threePulse {
+@keyframes tenPulse {
   from { background-color: hsl(130, 80%, 52%); box-shadow: 0 0 9px #666, inset 0 0 8px #333; }
   50% { background-color: hsl(130, 100%, 52%); box-shadow: 0 0 18px hsl(130, 100%, 52%), inset 0 0 8px #333; }
   to { background-color: hsl(130, 80%, 52%); box-shadow: 0 0 9px #666, inset 0 0 8px #333; }
 }
 
-@keyframes fourPulse {
+@keyframes threePulse {
   from { background-color: hsl(135, 80%, 55%); box-shadow: 0 0 9px #666, inset 0 0 8px #333; }
   50% { background-color: hsl(135, 100%, 55%); box-shadow: 0 0 18px hsl(135, 100%, 55%), inset 0 0 8px #333; }
   to { background-color: hsl(135, 80%, 55%); box-shadow: 0 0 9px #666, inset 0 0 8px #333; }
 }
 
-@keyframes fivePulse {
+@keyframes eightPulse {
   from { background-color: hsl(140, 80%, 58%); box-shadow: 0 0 9px #666, inset 0 0 8px #333; }
   50% { background-color: hsl(140, 100%, 58%); box-shadow: 0 0 18px hsl(140, 100%, 58%), inset 0 0 8px #333; }
   to { background-color: hsl(140, 80%, 58%); box-shadow: 0 0 9px #666, inset 0 0 8px #333; }
 }
 
-@keyframes sixPulse {
+@keyframes onePulse {
   from { background-color: hsl(145, 80%, 61%); box-shadow: 0 0 9px #666, inset 0 0 8px #333; }
   50% { background-color: hsl(145, 100%, 61%); box-shadow: 0 0 18px hsl(145, 100%, 61%), inset 0 0 8px #333; }
   to { background-color: hsl(145, 80%, 61%); box-shadow: 0 0 9px #666, inset 0 0 8px #333; }
 }
 
-@keyframes sevenPulse {
+@keyframes sixPulse {
   from { background-color: hsl(150, 80%, 64%); box-shadow: 0 0 9px #666, inset 0 0 8px #333; }
   50% { background-color: hsl(150, 100%, 64%); box-shadow: 0 0 18px hsl(150, 100%, 64%), inset 0 0 8px #333;}
   to { background-color: hsl(150, 80%, 64%); box-shadow: 0 0 9px #666, inset 0 0 8px #333; }
 }
 
-@keyframes eightPulse {
+@keyframes elevenPulse {
   from { background-color: hsl(155, 80%, 67%); box-shadow: 0 0 9px #666, inset 0 0 8px #333; }
   50% { background-color: hsl(155, 100%, 67%); box-shadow: 0 0 18px hsl(155, 100%, 67%), inset 0 0 8px #333; }
   to { background-color: hsl(155, 80%, 67%); box-shadow: 0 0 9px #666, inset 0 0 8px #333; }
 }
 
-@keyframes ninePulse {
+@keyframes fourPulse {
   from { background-color: hsl(160, 80%, 70%); box-shadow: 0 0 9px #666, inset 0 0 8px #333; }
   50% { background-color: hsl(160, 100%, 70%); box-shadow: 0 0 15px hsl(160, 100%, 70%), inset 0 0 8px #333; }
   to { background-color: hsl(160, 80%, 70%); box-shadow: 0 0 9px #666, inset 0 0 8px #333; }
 }
 
-@keyframes tenPulse {
+@keyframes ninePulse {
   from { background-color: hsl(165, 80%, 73%); box-shadow: 0 0 9px #666, inset 0 0 8px #333; }
   50% { background-color: hsl(165, 100%, 73%); box-shadow: 0 0 18px hsl(165, 100%, 73%), inset 0 0 8px #333; }
   to { background-color: hsl(165, 80%, 73%); box-shadow: 0 0 9px #666, inset 0 0 8px #333; }
 }
 
-@keyframes elevenPulse {
+@keyframes twoPulse {
   from { background-color: hsl(170, 80%, 76%); box-shadow: 0 0 9px #666, inset 0 0 8px #333; }
   50% { background-color: hsl(170, 100%, 76%); box-shadow: 0 0 18px hsl(170, 100%, 76%), inset 0 0 8px #333; }
   to { background-color: hsl(170, 80%, 76%); box-shadow: 0 0 9px #666, inset 0 0 8px #333; }
 }
 
-@keyframes twelvePulse {
+@keyframes sevenPulse {
   from { background-color: hsl(175, 80%, 79%); box-shadow: 0 0 9px #666, inset 0 0 8px #333; }
   50% { background-color: hsl(175, 100%, 79%); box-shadow: 0 0 18px hsl(175, 100%, 79%), inset 0 0 8px #333; }
   to { background-color: hsl(175, 80%, 79%); box-shadow: 0 0 9px #666, inset 0 0 8px #333; }
