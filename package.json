@@ -4,6 +4,7 @@
   "description": "",
   "main": "frontend/scalar.jsx",
   "scripts": {
+    "postinstall": "webpack",
     "start": "webpack -w",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
