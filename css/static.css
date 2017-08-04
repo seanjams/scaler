@@ -16,34 +16,88 @@
   height: 100vh;
 }
 
-@keyframes redPulse {
-  from { background-color: rgb(200,0,0); box-shadow: 0 0 9px #666; }
-  50% { background-color: rgb(255,0,0); box-shadow: 0 0 18px rgb(255,0,0); }
-  to { background-color: rgb(200,0,0); box-shadow: 0 0 9px #666; }
+h1 {
+  font-size: 52px;
+  color: #ccac00;
+  font-family: 'Pacifico', cursive;
+  text-shadow: 3px 3px 0px rgba(162,125,25,1), -2px -2px 0px rgba(3,3,3,0.8);
+}
+/*rgb(212,175,55)*/
+/*
+:root {
+
+}*/
+
+@keyframes onePulse {
+  from { background-color: hsl(120, 80%, 46%); box-shadow: 0 0 9px #666, inset 0 0 8px #333; }
+  50% { background-color: hsl(120, 100%, 46%); box-shadow: 0 0 18px hsl(120, 100%, 46%), inset 0 0 8px #333; }
+  to { background-color: hsl(120, 80%, 46%); box-shadow: 0 0 9px #666, inset 0 0 8px #333; }
 }
 
-@keyframes orangePulse {
-  from { background-color: rgb(200,100,0); box-shadow: 0 0 9px #666; }
-  50% { background-color: rgb(255,125,0); box-shadow: 0 0 18px rgb(255,125,0); }
-  to { background-color: rgb(200,100,0); box-shadow: 0 0 9px #666; }
+@keyframes twoPulse {
+  from { background-color: hsl(125, 80%, 49%); box-shadow: 0 0 9px #666, inset 0 0 8px #333; }
+  50% { background-color: hsl(125, 100%, 49%); box-shadow: 0 0 18px hsl(125, 100%, 49%), inset 0 0 8px #333; }
+  to { background-color: hsl(125, 80%, 49%); box-shadow: 0 0 9px #666, inset 0 0 8px #333; }
 }
 
-@keyframes yellowPulse {
-  from { background-color: rgb(200,200,0); box-shadow: 0 0 9px #666; }
-  50% { background-color: rgb(255,255,0); box-shadow: 0 0 18px rgb(255,255,0); }
-  to { background-color: rgb(200,200,0); box-shadow: 0 0 9px #666; }
+@keyframes threePulse {
+  from { background-color: hsl(130, 80%, 52%); box-shadow: 0 0 9px #666, inset 0 0 8px #333; }
+  50% { background-color: hsl(130, 100%, 52%); box-shadow: 0 0 18px hsl(130, 100%, 52%), inset 0 0 8px #333; }
+  to { background-color: hsl(130, 80%, 52%); box-shadow: 0 0 9px #666, inset 0 0 8px #333; }
 }
 
-@keyframes lightGreenPulse {
-  from { background-color: rgb(100,200,0); box-shadow: 0 0 9px #666; }
-  50% { background-color: rgb(125,255,0); box-shadow: 0 0 18px rgb(125,255,0); }
-  to { background-color: rgb(100,200,0); box-shadow: 0 0 9px #666; }
+@keyframes fourPulse {
+  from { background-color: hsl(135, 80%, 55%); box-shadow: 0 0 9px #666, inset 0 0 8px #333; }
+  50% { background-color: hsl(135, 100%, 55%); box-shadow: 0 0 18px hsl(135, 100%, 55%), inset 0 0 8px #333; }
+  to { background-color: hsl(135, 80%, 55%); box-shadow: 0 0 9px #666, inset 0 0 8px #333; }
 }
 
-@keyframes greenPulse {
-  from { background-color: rgb(0,200,0); box-shadow: 0 0 9px #666; }
-  50% { background-color: rgb(0,255,0); box-shadow: 0 0 18px rgb(0,255,0); }
-  to { background-color: rgb(0,200,0); box-shadow: 0 0 9px #666; }
+@keyframes fivePulse {
+  from { background-color: hsl(140, 80%, 58%); box-shadow: 0 0 9px #666, inset 0 0 8px #333; }
+  50% { background-color: hsl(140, 100%, 58%); box-shadow: 0 0 18px hsl(140, 100%, 58%), inset 0 0 8px #333; }
+  to { background-color: hsl(140, 80%, 58%); box-shadow: 0 0 9px #666, inset 0 0 8px #333; }
+}
+
+@keyframes sixPulse {
+  from { background-color: hsl(145, 80%, 61%); box-shadow: 0 0 9px #666, inset 0 0 8px #333; }
+  50% { background-color: hsl(145, 100%, 61%); box-shadow: 0 0 18px hsl(145, 100%, 61%), inset 0 0 8px #333; }
+  to { background-color: hsl(145, 80%, 61%); box-shadow: 0 0 9px #666, inset 0 0 8px #333; }
+}
+
+@keyframes sevenPulse {
+  from { background-color: hsl(150, 80%, 64%); box-shadow: 0 0 9px #666, inset 0 0 8px #333; }
+  50% { background-color: hsl(150, 100%, 64%); box-shadow: 0 0 18px hsl(150, 100%, 64%), inset 0 0 8px #333;}
+  to { background-color: hsl(150, 80%, 64%); box-shadow: 0 0 9px #666, inset 0 0 8px #333; }
+}
+
+@keyframes eightPulse {
+  from { background-color: hsl(155, 80%, 67%); box-shadow: 0 0 9px #666, inset 0 0 8px #333; }
+  50% { background-color: hsl(155, 100%, 67%); box-shadow: 0 0 18px hsl(155, 100%, 67%), inset 0 0 8px #333; }
+  to { background-color: hsl(155, 80%, 67%); box-shadow: 0 0 9px #666, inset 0 0 8px #333; }
+}
+
+@keyframes ninePulse {
+  from { background-color: hsl(160, 80%, 70%); box-shadow: 0 0 9px #666, inset 0 0 8px #333; }
+  50% { background-color: hsl(160, 100%, 70%); box-shadow: 0 0 15px hsl(160, 100%, 70%), inset 0 0 8px #333; }
+  to { background-color: hsl(160, 80%, 70%); box-shadow: 0 0 9px #666, inset 0 0 8px #333; }
+}
+
+@keyframes tenPulse {
+  from { background-color: hsl(165, 80%, 73%); box-shadow: 0 0 9px #666, inset 0 0 8px #333; }
+  50% { background-color: hsl(165, 100%, 73%); box-shadow: 0 0 18px hsl(165, 100%, 73%), inset 0 0 8px #333; }
+  to { background-color: hsl(165, 80%, 73%); box-shadow: 0 0 9px #666, inset 0 0 8px #333; }
+}
+
+@keyframes elevenPulse {
+  from { background-color: hsl(170, 80%, 76%); box-shadow: 0 0 9px #666, inset 0 0 8px #333; }
+  50% { background-color: hsl(170, 100%, 76%); box-shadow: 0 0 18px hsl(170, 100%, 76%), inset 0 0 8px #333; }
+  to { background-color: hsl(170, 80%, 76%); box-shadow: 0 0 9px #666, inset 0 0 8px #333; }
+}
+
+@keyframes twelvePulse {
+  from { background-color: hsl(175, 80%, 79%); box-shadow: 0 0 9px #666, inset 0 0 8px #333; }
+  50% { background-color: hsl(175, 100%, 79%); box-shadow: 0 0 18px hsl(175, 100%, 79%), inset 0 0 8px #333; }
+  to { background-color: hsl(175, 80%, 79%); box-shadow: 0 0 9px #666, inset 0 0 8px #333; }
 }
 
 @keyframes greenPiano {
@@ -58,50 +112,92 @@
   to { background-color: #009933; box-shadow: 0 0 9px #666, inset 0 0 8px #666; }
 }
 
-@keyframes turquoisePulse {
-  from { background-color: rgb(0,200,100); box-shadow: 0 0 9px #666; }
-  50% { background-color: rgb(0,255,125); box-shadow: 0 0 18px rgb(0,255,125); }
-  to { background-color: rgb(0,200,100); box-shadow: 0 0 9px #666; }
+@keyframes pianoShading {
+  from { box-shadow: 0 0 9px #666, inset 0 0 8px #666; }
+  50% { box-shadow: 0 0 18px #00e600, inset 0 0 8px #666; }
+  to { box-shadow: 0 0 9px #666, inset 0 0 8px #666; }
 }
 
-@keyframes cyanPulse {
-  from { background-color: rgb(0,200,200); box-shadow: 0 0 9px #666; }
-  50% { background-color: rgb(0,255,255); box-shadow: 0 0 18px rgb(0,255,255); }
-  to { background-color: rgb(0,200,200); box-shadow: 0 0 9px #666; }
+@keyframes darkPianoShading {
+  from { box-shadow: 0 0 9px #666, inset 0 0 8px #666; }
+  50% { box-shadow: 0 0 18px #33cc33, inset 0 0 8px #666; }
+  to { box-shadow: 0 0 9px #666, inset 0 0 8px #666; }
 }
 
-@keyframes oceanPulse {
-  from { background-color: rgb(0,100,200); box-shadow: 0 0 9px #666; }
-  50% { background-color: rgb(0,125,255); box-shadow: 0 0 18px rgb(0,125,255); }
-  to { background-color: rgb(0,100,200); box-shadow: 0 0 9px #666; }
+.in-key.C {
+  -webkit-animation-name: onePulse;
+  -webkit-animation-duration: 0.9s;
+  -webkit-animation-iteration-count: infinite;
 }
 
-@keyframes bluePulse {
-  from { background-color: #00aaff; box-shadow: 0 0 9px #666; }
-  50% { background-color: #66ccff; box-shadow: 0 0 18px #66ccff; }
-  to { background-color: #00aaff; box-shadow: 0 0 9px #666; }
+.in-key.Db {
+  -webkit-animation-name: twoPulse;
+  -webkit-animation-duration: 0.9s;
+  -webkit-animation-iteration-count: infinite;
+}
+
+.in-key.D {
+  -webkit-animation-name: threePulse;
+  -webkit-animation-duration: 0.9s;
+  -webkit-animation-iteration-count: infinite;
+}
+
+.in-key.Eb {
+  -webkit-animation-name: fourPulse;
+  -webkit-animation-duration: 0.9s;
+  -webkit-animation-iteration-count: infinite;
+}
+
+.in-key.E {
+  -webkit-animation-name: fivePulse;
+  -webkit-animation-duration: 0.9s;
+  -webkit-animation-iteration-count: infinite;
+}
+
+.in-key.F {
+  -webkit-animation-name: sixPulse;
+  -webkit-animation-duration: 0.9s;
+  -webkit-animation-iteration-count: infinite;
+}
+
+.in-key.Gb {
+  -webkit-animation-name: sevenPulse;
+  -webkit-animation-duration: 0.9s;
+  -webkit-animation-iteration-count: infinite;
+}
+
+.in-key.G {
+  -webkit-animation-name: eightPulse;
+  -webkit-animation-duration: 0.9s;
+  -webkit-animation-iteration-count: infinite;
+}
+
+.in-key.Ab {
+  -webkit-animation-name: ninePulse;
+  -webkit-animation-duration: 0.9s;
+  -webkit-animation-iteration-count: infinite;
+}
+
+.in-key.A {
+  -webkit-animation-name: tenPulse;
+  -webkit-animation-duration: 0.9s;
+  -webkit-animation-iteration-count: infinite;
+}
+
+.in-key.Bb {
+  -webkit-animation-name: elevenPulse;
+  -webkit-animation-duration: 0.9s;
+  -webkit-animation-iteration-count: infinite;
+}
+
+.in-key.B {
+  -webkit-animation-name: twelvePulse;
+  -webkit-animation-duration: 0.9s;
+  -webkit-animation-iteration-count: infinite;
 }
 
 /*@keyframes bluePulse {
-  from { background-color: rgb(0,0,200); box-shadow: 0 0 9px #666; }
-  50% { background-color: rgb(0,0,255); box-shadow: 0 0 18px rgb(0,0,255); }
-  to { background-color: rgb(0,0,200); box-shadow: 0 0 9px #666; }
+  from { background-color: #00aaff; box-shadow: 0 0 9px #666; }
+  50% { background-color: #66ccff; box-shadow: 0 0 18px #66ccff; }
+  to { background-color: #00aaff; box-shadow: 0 0 9px #666; }
 }*/
-
-@keyframes violetPulse {
-  from { background-color: rgb(100,0,200); box-shadow: 0 0 9px #666; }
-  50% { background-color: rgb(125,0,255); box-shadow: 0 0 18px rgb(125,0,255); }
-  to { background-color: rgb(100,0,200); box-shadow: 0 0 9px #666; }
-}
-
-@keyframes magentaPulse {
-  from { background-color: rgb(255,0,200); box-shadow: 0 0 9px #666; }
-  50% { background-color: rgb(255,0,255); box-shadow: 0 0 18px rgb(255,0,255); }
-  to { background-color: rgb(200,0,200); box-shadow: 0 0 9px #666; }
-}
-
-@keyframes pinkPulse {
-  from { background-color: rgb(200,0,100); box-shadow: 0 0 9px #666; }
-  50% { background-color: rgb(255,0,125); box-shadow: 0 0 18px rgb(255,0,125); }
-  to { background-color: rgb(200,0,100); box-shadow: 0 0 9px #666; }
-}

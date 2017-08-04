@@ -62,7 +62,7 @@ export const noteNames = [
   "B"
 ];
 
-export const keyMap = {
+export const oldKeyMap = {
   90: 0,
   83: 1,
   88: 2,
@@ -80,6 +80,26 @@ export const keyMap = {
   190: 14,
   186: 15,
   191: 16
+};
+
+export const keyMap = {
+  "z": 0,
+  "s": 1,
+  "x": 2,
+  "d": 3,
+  "c": 4,
+  "v": 5,
+  "g": 6,
+  "b": 7,
+  "h": 8,
+  "n": 9,
+  "j": 10,
+  "m": 11,
+  ",": 12,
+  "l": 13,
+  ".": 14,
+  ";": 15,
+  "/": 16
 };
 
 export const pianoKeyNames = [

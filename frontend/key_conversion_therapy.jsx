@@ -31,7 +31,7 @@ class Root extends React.Component {
       nextGain.gain.value = 0;
       gains.push(nextGain);
       nextEl.frequency.value = frequencies[name];
-      nextEl.type = 'sine';
+      nextEl.type = 'square';
       nextEl.start(0);
       return nextEl;
     });
@@ -54,7 +54,8 @@ class Root extends React.Component {
     e.preventDefault();
     const newNotes = [...this.state.notes];
     const newGains = [...this.state.gains];
-    let idx = Util.keyMap[e.keyCode];
+    let idx = Util.keyMap[e.key];
+    console.log(e.key);
     if (idx || idx === 0) {
       newNotes[idx] = true;
       const { context } = newGains[idx];
@@ -71,7 +72,7 @@ class Root extends React.Component {
     e.preventDefault();
     const newNotes = [...this.state.notes];
     const newGains = [...this.state.gains];
-    let idx = Util.keyMap[e.keyCode];
+    let idx = Util.keyMap[e.key];
     if (idx || idx === 0) {
       newNotes[idx] = false;
       const { context } = newGains[idx];
@@ -97,6 +98,7 @@ class Root extends React.Component {
 
     return (
       <div>
+        <h1>Key Conversion Therapy</h1>
         <Guitar notes={this.state.notes}
                 handleKeyUp={this.handleKeyUp}
                 handleKeyDown={this.handleKeyDown}

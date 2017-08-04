@@ -1,7 +1,9 @@
 .clock {
   display: inline-block;
-  width: 300px;
-  height: 300px;
+  margin: auto;
+  margin-top: 80px;
+  width: 250px;
+  height: 250px;
   position: relative;
 }
 
@@ -14,8 +16,8 @@
   border-radius: 30px;
 }
 
-.in-key {
+/*.in-key {
   -webkit-animation-name: bluePulse;
   -webkit-animation-duration: 0.7s;
   -webkit-animation-iteration-count: infinite;
-}
+}*/

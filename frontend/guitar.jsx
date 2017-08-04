@@ -25,7 +25,7 @@ class Guitar extends React.Component {
     }
     return newNotes.map((note, i) => (
         <button key={`fret-${i}`}
-                className={`fret ${note ? "in-key" : ""} ${Util.noteNames[i + noteShift]}`}
+                className={`fret ${note ? "in-key" : ""} ${Util.noteNames[i + 1 + noteShift]}`}
                 style={{
                   left: -31 * i * i / 20 + 645 * i / 12,
                   top: i * (n - 2.5) / 4.20

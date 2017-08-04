@@ -22,13 +22,13 @@ class Clock extends React.Component {
   }
 
   renderNotes() {
-    const center = { x: 185, y: 185 };
+    const center = { x: 125, y: 125 };
     const scaleRadius = 100;
     const newNotes = this.clockNotes();
     return newNotes.slice(0,12).map((note, i) => (
       <button onClick={() => this.handleClick(i)}
               key={`clock-${i}`}
-              className={`note ${note ? "in-key" : ""}`}
+              className={`note ${note ? "in-key" : ""} ${Util.noteNames[i]}`}
               onKeyDown={this.props.handleKeyDown}
               onKeyUp={this.props.handleKeyUp}
               style={{

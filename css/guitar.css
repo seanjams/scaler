@@ -1,23 +1,20 @@
 .guitar-container {
-  padding: 30px;
+  padding: 10px;
   position: relative;
   top: 50px;
   width: 1000px;
   background-image: url("../images/amp-mesh-guitar2.png");
-
   margin: auto;
   border-radius: 40px;
   border: 10px solid #0c0c0c;
-  /*border-style: inset;*/
   box-shadow: 0 0 50px 25px rgba(3,3,3,100), inset 0 0 22px 8px rgba(3,3,3,100);
-  /*box-shadow: inset 0px 0px 30px 15px rgba(0,0,0,100);*/
 }
 
 .guitar {
   width: 1000px;
   height: auto;
   display: inline-block;
-  background-image: url("../images/guitar-neck.png");
+  background-image: url("../images/guitar-neck-2.png");
   background-size: 1000px;
 }
 
@@ -35,78 +32,6 @@
   width: 660px;
 }
 
-.fret.in-key.C {
-  -webkit-animation-name: redPulse;
-  -webkit-animation-duration: 0.9s;
-  -webkit-animation-iteration-count: infinite;
-}
-
-.fret.in-key.Db {
-  -webkit-animation-name: orangePulse;
-  -webkit-animation-duration: 0.9s;
-  -webkit-animation-iteration-count: infinite;
-}
-
-.fret.in-key.D {
-  -webkit-animation-name: yellowPulse;
-  -webkit-animation-duration: 0.9s;
-  -webkit-animation-iteration-count: infinite;
-}
-
-.fret.in-key.Eb {
-  -webkit-animation-name: lightGreenPulse;
-  -webkit-animation-duration: 0.9s;
-  -webkit-animation-iteration-count: infinite;
-}
-
-.fret.in-key.E {
-  -webkit-animation-name: greenPulse;
-  -webkit-animation-duration: 0.9s;
-  -webkit-animation-iteration-count: infinite;
-}
-
-.fret.in-key.F {
-  -webkit-animation-name: turquoisePulse;
-  -webkit-animation-duration: 0.9s;
-  -webkit-animation-iteration-count: infinite;
-}
-
-.fret.in-key.Gb {
-  -webkit-animation-name: cyanPulse;
-  -webkit-animation-duration: 0.9s;
-  -webkit-animation-iteration-count: infinite;
-}
-
-.fret.in-key.G {
-  -webkit-animation-name: oceanPulse;
-  -webkit-animation-duration: 0.9s;
-  -webkit-animation-iteration-count: infinite;
-}
-
-.fret.in-key.Ab{
-  -webkit-animation-name: bluePulse;
-  -webkit-animation-duration: 0.9s;
-  -webkit-animation-iteration-count: infinite;
-}
-
-.fret.in-key.A {
-  -webkit-animation-name: violetPulse;
-  -webkit-animation-duration: 0.9s;
-  -webkit-animation-iteration-count: infinite;
-}
-
-.fret.in-key.Bb {
-  -webkit-animation-name: magentaPulse;
-  -webkit-animation-duration: 0.9s;
-  -webkit-animation-iteration-count: infinite;
-}
-
-.fret.in-key.B {
-  -webkit-animation-name: pinkPulse;
-  -webkit-animation-duration: 0.9s;
-  -webkit-animation-iteration-count: infinite;
-}
-
 .fret {
   position: relative;
   top: 5px;
@@ -116,11 +41,3 @@
   background: transparent;
   border-radius: 13px;
 }
-
-/*.fret.in-key {
-  -webkit-animation-name: redPulse;
-  -webkit-animation-duration: 0.9s;
-  -webkit-animation-iteration-count: infinite;
-}*/
-
-/*Here we can use the noteName class and set different notes to different colors*/
