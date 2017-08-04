@@ -16,7 +16,7 @@ With this set of musical widgets, users will be able to
 In addition, this project will include:
 
 - [x] A short live simulation upon start showing which parts of the app are interactive
-- [ ] A production Readme
+- [x] A production Readme
 
 ### Wireframes
 

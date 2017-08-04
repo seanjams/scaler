@@ -5,7 +5,7 @@ Scalar is a web application built in Javascript/React where guitarists and piani
 ## Features
 
 - Interactive piano, guitar neck, and note selector that allows users to click on notes they want to see
-- Notes hues are assigned according to the circle of fifths, which makes "close" notes be "close" in color
+- Note hues are assigned according to the circle of fifths, which makes "close" notes be "close" in color
 - Keyboard sounds built with Web Audio API oscillators
 
 ## Programming Languages
