@@ -9,9 +9,11 @@ class Root extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      // notes: Util.major.concat(Util.major.slice(0,5)),
       notes: Util.none,
       oscillators: [],
-      gains: []
+      gains: [],
+      ready: false
     };
     this.handleClick = this.handleClick.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
@@ -19,11 +21,11 @@ class Root extends React.Component {
     // this.toggleSingleNote = this.toggleSingleNote.bind(this);
   }
 
-  componentDidMount() {
+  letThereBeSound() {
     const { pianoKeyNames, frequencies } = Util;
-    const context = new AudioContext();
     const gains = [];
-    const oscillators = pianoKeyNames.map((name) => {
+    const context = new AudioContext();
+    const oscillators = Util.pianoKeyNames.map((name) => {
       let nextEl = context.createOscillator();
       let nextGain = context.createGain();
       nextEl.connect(nextGain);
@@ -31,36 +33,47 @@ class Root extends React.Component {
       nextGain.gain.value = 0;
       gains.push(nextGain);
       nextEl.frequency.value = frequencies[name];
-      nextEl.type = 'square';
+      nextEl.type = 'triangle';
       nextEl.start(0);
       return nextEl;
     });
     this.setState({oscillators, gains});
+    return oscillators;
   }
 
-  // toggleSingleNote(e) {
-  //   e.preventDefault();
-  //   const { notes } = this.state;
-  //   let newNotes;
-  //   if (notes.length === 12) {
-  //     newNotes = notes.concat(notes);
-  //   } else {
-  //     newNotes = notes.slice(0,12);
-  //   }
-  //   this.setState({notes: newNotes})
-  // }
+  componentDidMount() {
+    this.letThereBeSound();
+    let i = 0;
+    const interval = setInterval(() => {
+      i > 0 ? this.changeSound(i-1, 0): null;
+      this.changeSound(i, 0.7);
+      if (++i === 12) {
+        setTimeout(() => this.changeSound(i-1, 0), 200);
+        window.clearInterval(interval);
+      }
+    }, 150);
+
+  }
+
+  changeSound(i, vol) {
+    const { notes, gains } = this.state;
+    const { context } = gains[i];
+    notes[i] = !!vol;
+    gains[i].gain
+      .linearRampToValueAtTime(vol, context.currentTime + 0.2);
+    this.setState({notes, gains});
+  }
 
   handleKeyDown(e) {
     e.preventDefault();
     const newNotes = [...this.state.notes];
     const newGains = [...this.state.gains];
     let idx = Util.keyMap[e.key];
-    console.log(e.key);
     if (idx || idx === 0) {
       newNotes[idx] = true;
       const { context } = newGains[idx];
       newGains[idx].gain
-        .linearRampToValueAtTime(1, context.currentTime + 0.2);
+        .linearRampToValueAtTime(0.7, context.currentTime + 0.2);
       this.setState({
         notes: newNotes,
         gains: newGains
@@ -94,8 +107,9 @@ class Root extends React.Component {
     this.setState({notes: newNotes});
   }
 
-  render() {
+// add click disabling in return perhaps
 
+  render() {
     return (
       <div>
         <h1>Key Conversion Therapy</h1>
@@ -103,7 +117,7 @@ class Root extends React.Component {
                 handleKeyUp={this.handleKeyUp}
                 handleKeyDown={this.handleKeyDown}
                 handleClick={this.handleClick}/>
-              <div className="piano-clock-container">
+        <div className="piano-clock-container">
           <Piano notes={this.state.notes}
                  handleKeyUp={this.handleKeyUp}
                  handleKeyDown={this.handleKeyDown}
