@@ -20,13 +20,13 @@ Scalar is a web application built in Javascript/React where guitarists and piani
 
 Click around, build your own scales. Know a song on piano? Figure out the guitar chords or vice versa!
 
-![click_demo](/app/assets/images/click_demo.gif)
+![click_demo](/images/click_demo.gif)
 
 ### Hear your Scales
 
 Use the keyboard to hear each note and interval with We Audio API oscillators.
 
-![keys_demo](/app/assets/images/keys_demo.gif)
+![keys_demo](/images/keys_demo.gif)
 
 ## In the making...
 
