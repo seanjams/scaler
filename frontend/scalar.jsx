@@ -93,7 +93,11 @@ class Root extends React.Component {
     args.forEach((idx) => (
       newNotes[idx] = !newNotes[idx]
     ));
-    this.setState({notes: newNotes});
+    this.changeSound(i, 0.3);
+    setTimeout(() => {
+      this.changeSound(i, 0);
+      this.setState({notes: newNotes});
+    }, 100);
   }
 
 // add click disabling in return perhaps

@@ -10397,12 +10397,18 @@ var Root = function (_React$Component) {
   }, {
     key: 'handleClick',
     value: function handleClick(i, j) {
+      var _this3 = this;
+
       var newNotes = [].concat(_toConsumableArray(this.state.notes));
       var args = Array.from(arguments);
       args.forEach(function (idx) {
         return newNotes[idx] = !newNotes[idx];
       });
-      this.setState({ notes: newNotes });
+      this.changeSound(i, 0.3);
+      setTimeout(function () {
+        _this3.changeSound(i, 0);
+        _this3.setState({ notes: newNotes });
+      }, 100);
     }
 
     // add click disabling in return perhaps
