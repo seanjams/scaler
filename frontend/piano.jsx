@@ -16,7 +16,7 @@ class Piano extends React.Component {
             ${blackKeys.includes(i % 12) ? "black" : "white"}
             ${note ? "in-key" : ""}
             ${Util.noteNames[i % 12]}`}>
-          <p>{Util.keyMap[i]}</p>    
+          <p>{Util.keyMap[i]}</p>
         </button>
       );
     });
@@ -24,7 +24,7 @@ class Piano extends React.Component {
 
   render() {
     return(
-      <div className="piano-keys">
+      <div id="piano" className="piano-keys">
         { this.renderKeys() }
       </div>
     );

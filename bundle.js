@@ -10302,16 +10302,15 @@ var Root = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (Root.__proto__ || Object.getPrototypeOf(Root)).call(this, props));
 
     _this.state = {
-      // notes: Util.major.concat(Util.major.slice(0,5)),
       notes: Util.none,
       oscillators: [],
-      gains: []
-      // ready: false
+      gains: [],
+      vol: 0.3
     };
     _this.handleClick = _this.handleClick.bind(_this);
     _this.handleKeyDown = _this.handleKeyDown.bind(_this);
     _this.handleKeyUp = _this.handleKeyUp.bind(_this);
-    // this.toggleSingleNote = this.toggleSingleNote.bind(this);
+    // this.toggleMute = this.toggleMute.bind(this);
     return _this;
   }
 
@@ -10347,7 +10346,7 @@ var Root = function (_React$Component) {
       var i = 0;
       var interval = setInterval(function () {
         i > 0 ? _this2.changeSound(i - 1, 0) : null;
-        _this2.changeSound(i, 0.3);
+        _this2.changeSound(i, _this2.state.vol);
         if (++i === 12) {
           setTimeout(function () {
             return _this2.changeSound(i - 1, 0);
@@ -10370,10 +10369,9 @@ var Root = function (_React$Component) {
     }
 
     // toggleMute() {
-    //   const { gains } = this.state;
-    //   this.state.notes.forEach((note, i) => {
-    //     this.changeSound()
-    //   });
+    //   const vol = this.state.vol ? 0 : 0.3;
+    //   this.setState({vol});
+    //
     // }
 
   }, {
@@ -10382,7 +10380,7 @@ var Root = function (_React$Component) {
       e.preventDefault();
       var idx = Util.keyMap.indexOf(e.key);
       if (idx || idx === 0) {
-        this.changeSound(idx, 0.3);
+        this.changeSound(idx, this.state.vol);
       }
     }
   }, {
@@ -10404,7 +10402,7 @@ var Root = function (_React$Component) {
       args.forEach(function (idx) {
         return newNotes[idx] = !newNotes[idx];
       });
-      this.changeSound(i, 0.3);
+      this.changeSound(i, this.state.vol);
       setTimeout(function () {
         _this3.changeSound(i, 0);
         _this3.setState({ notes: newNotes });
@@ -10470,8 +10468,13 @@ document.addEventListener('DOMContentLoaded', function () {
   var root = document.getElementById('root');
   _reactDom2.default.render(_react2.default.createElement(Root, null), root);
   var AudioContext = window.AudioContext || window.webkitAudioContext;
-  var context = new AudioContext();
+  document.getElementById('piano').focus();
 });
+
+// window.onload =
+
+
+// <button onClick={this.toggleMute}>Mute</button>
 //
 
 /***/ }),
@@ -23714,7 +23717,7 @@ var Piano = function (_React$Component) {
     value: function render() {
       return _react2.default.createElement(
         'div',
-        { className: 'piano-keys' },
+        { id: 'piano', className: 'piano-keys' },
         this.renderKeys()
       );
     }

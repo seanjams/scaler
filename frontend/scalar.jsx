@@ -9,16 +9,15 @@ class Root extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      // notes: Util.major.concat(Util.major.slice(0,5)),
       notes: Util.none,
       oscillators: [],
-      gains: []
-      // ready: false
+      gains: [],
+      vol: 0.3
     };
     this.handleClick = this.handleClick.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
     this.handleKeyUp = this.handleKeyUp.bind(this);
-    // this.toggleSingleNote = this.toggleSingleNote.bind(this);
+    // this.toggleMute = this.toggleMute.bind(this);
   }
 
   letThereBeSound() {
@@ -46,7 +45,7 @@ class Root extends React.Component {
     let i = 0;
     const interval = setInterval(() => {
       i > 0 ? this.changeSound(i-1, 0): null;
-      this.changeSound(i, 0.3);
+      this.changeSound(i, this.state.vol);
       if (++i === 12) {
         setTimeout(() => this.changeSound(i-1, 0), 200);
         window.clearInterval(interval);
@@ -65,17 +64,16 @@ class Root extends React.Component {
   }
 
   // toggleMute() {
-  //   const { gains } = this.state;
-  //   this.state.notes.forEach((note, i) => {
-  //     this.changeSound()
-  //   });
+  //   const vol = this.state.vol ? 0 : 0.3;
+  //   this.setState({vol});
+  //
   // }
 
   handleKeyDown(e) {
     e.preventDefault();
     let idx = Util.keyMap.indexOf(e.key);
     if (idx || idx === 0) {
-      this.changeSound(idx, 0.3);
+      this.changeSound(idx, this.state.vol);
     }
   }
 
@@ -93,7 +91,7 @@ class Root extends React.Component {
     args.forEach((idx) => (
       newNotes[idx] = !newNotes[idx]
     ));
-    this.changeSound(i, 0.3);
+    this.changeSound(i, this.state.vol);
     setTimeout(() => {
       this.changeSound(i, 0);
       this.setState({notes: newNotes});
@@ -106,17 +104,17 @@ class Root extends React.Component {
   render() {
     return (
       <div>
-      <span className="title">
-        <h1>Scalar</h1>
-        <span className="links">
-          <a href="https://github.com/seanjams/Scalar">
-            <i id="github-icon" className="fa fa-github-square" aria-hidden="true"></i>
-          </a>
-          <a href="#">
-            <i id="linkedin-icon" className="fa fa-linkedin-square" aria-hidden="true"></i>
-          </a>
+        <span className="title">
+          <h1>Scalar</h1>
+          <span className="links">
+            <a href="https://github.com/seanjams/Scalar">
+              <i id="github-icon" className="fa fa-github-square" aria-hidden="true"></i>
+            </a>
+            <a href="#">
+              <i id="linkedin-icon" className="fa fa-linkedin-square" aria-hidden="true"></i>
+            </a>
+          </span>
         </span>
-      </span>
         <Guitar notes={this.state.notes}
                 handleKeyUp={this.handleKeyUp}
                 handleKeyDown={this.handleKeyDown}
@@ -140,6 +138,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const root = document.getElementById('root');
   ReactDOM.render(<Root />, root);
   const AudioContext = window.AudioContext || window.webkitAudioContext;
-  const context = new AudioContext();
+  document.getElementById('piano').focus();
 });
+
+// window.onload =
+
+
+
+
+  // <button onClick={this.toggleMute}>Mute</button>
 //
