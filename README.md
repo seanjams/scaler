@@ -42,6 +42,40 @@ return newNotes.map((note, i) => (
 ));
 ```
 
+In order to make sound, we create Web Audio API oscillators with the frequencies of our notes in a function called letThereBeSound(), and save these to our state. Once an oscillator has stopped, it cannot start again, so we save corresponding gain nodes to our state for each note to change the volumes.
+
+```jsx
+componentDidMount() {
+  this.letThereBeSound();
+  let i = 0;
+  const interval = setInterval(() => {
+    i > 0 ? this.changeSound(i-1, 0): null;
+    this.changeSound(i, this.state.vol);
+    if (++i === 12) {
+      setTimeout(() => this.changeSound(i-1, 0), 200);
+      window.clearInterval(interval);
+    }
+  }, 180);
+}
+
+changeSound(i, vol) {
+  const { notes, gains } = this.state;
+  const { context } = gains[i];
+  notes[i] = !!vol;
+  gains[i].gain
+    .linearRampToValueAtTime(vol, context.currentTime + 0.2);
+  this.setState({notes, gains});
+}
+
+handleKeyDown(e) {
+  e.preventDefault();
+  let idx = Util.keyMap.indexOf(e.key);
+  if (idx || idx === 0) {
+    this.changeSound(idx, this.state.vol);
+  }
+}
+```
+
 
 
 

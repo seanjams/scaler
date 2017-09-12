@@ -51,7 +51,6 @@ class Root extends React.Component {
         window.clearInterval(interval);
       }
     }, 180);
-
   }
 
   changeSound(i, vol) {
