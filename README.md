@@ -20,15 +20,30 @@ Scalar is a web application built in Javascript/React where guitarists and piani
 
 ### Complete Interactivity
 
-Click around, build your own scales. Know a song on piano? Figure out the guitar chords or vice versa!
-
-![click_demo](/images/click_demo.gif)
-
-### Hear your Scales
-
-Use the keyboard to hear each note and interval with We Audio API oscillators.
+Click around, build your own scales. Know a song on piano? Figure out the guitar chords or vice versa! Use the keyboard to hear each note and interval. Sounds were achieved the fun way, with Web Audio API oscillators.
 
 ![keys_demo](/images/keys_demo.gif)
+
+### Coding challenges
+
+Laying button elements across a fretboard ended up being no simple task. Of course no one wants to explicitly code 72 different elements with different positions, so we use math! Due to the nature of fretboards getting wider and more compact as we move down the neck, we use the index of the notes as a variable and apply a mild parabolic spacing and linear widening to the top and left properties of each button. This allows each button to sit right on top of the string and fret its supposed to represent.
+
+```jsx
+return newNotes.map((note, i) => (
+    <button key={`fret-${i}`}
+            className={`fret ${note ? "in-key" : ""} ${Util.noteNames[i + 1 + noteShift]}`}
+            style={{
+              left: -31 * i * i / 20 + 645 * i / 12,
+              top: i * (n - 2.5) / 4.20
+            }}
+
+            onClick={() => this.handleClick((i + 1 + noteShift) % 12)}>
+    </button>
+));
+```
+
+
+
 
 ## In the making...
 
