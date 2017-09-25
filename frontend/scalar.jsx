@@ -19,7 +19,7 @@ class Root extends React.Component {
     this.handleClick = this.handleClick.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
     this.handleKeyUp = this.handleKeyUp.bind(this);
-    // this.toggleMute = this.toggleMute.bind(this);
+    this.toggleMute = this.toggleMute.bind(this);
   }
 
   letThereBeSound() {
@@ -65,7 +65,7 @@ class Root extends React.Component {
   changeSound(i, vol) {
     const { notes, gains } = this.state;
     const { context } = gains[i];
-    notes[i] = !!vol;
+    notes[i] = !notes[i];
     gains[i].gain
       .linearRampToValueAtTime(vol, context.currentTime + 0.18);
     this.setState({notes, gains});
@@ -79,7 +79,6 @@ class Root extends React.Component {
 
   //turns notes on, only used by piano
   handleKeyDown(e) {
-    e.preventDefault();
     let idx = Util.keyMap.indexOf(e.key);
     if (idx >= 0) {
       this.changeSound(idx, this.state.vol);
@@ -88,18 +87,17 @@ class Root extends React.Component {
 
   //turns notes off, only used py piano
   handleKeyUp(e) {
-    e.preventDefault();
     let idx = Util.keyMap.indexOf(e.key);
     if (idx >= 0) {
       this.changeSound(idx, 0);
     }
   }
 
-  //turns notes on and then off shortly after, used by clock and guitar
+  //turns notes on and then off shortly after
   handleClick(i, j) {
     const newNotes = [...this.state.notes];
     const args = Array.from(arguments);
-    args.forEach((idx) => (
+    args.forEach(idx => (
       newNotes[idx] = !newNotes[idx]
     ));
     this.changeSound(i, this.state.vol);
@@ -109,12 +107,20 @@ class Root extends React.Component {
     }, 200);
   }
 
+  toggleMute(e) {
+    if (this.state.vol > 0) {
+      this.setState({vol: 0});
+    } else {
+      this.setState({vol: 0.3});
+    }
+  }
+
 // add click disabling in return perhaps
 //add mute!!
 
   render() {
     return (
-      <div>
+      <div className="container">
         <span className="title">
           <h1>Scalar</h1>
           <span className="links">
@@ -124,6 +130,12 @@ class Root extends React.Component {
             <a href="https://www.linkedin.com/in/seanvoreilly">
               <i id="linkedin-icon" className="fa fa-linkedin-square" aria-hidden="true"></i>
             </a>
+            <button onClick={this.toggleMute}>
+              <i id="linkedin-icon" className={
+                  `fa fa-volume-${this.state.vol > 0 ? "down" : "off"}`
+                }
+                aria-hidden="true"></i>
+            </button>
           </span>
         </span>
         <Guitar notes={this.state.notes}
@@ -151,5 +163,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   //piano doesn't exist until DOM is rendered
   const piano = document.getElementById("piano-key-1");
+
+  //cannot focus away from piano, allows keys to always sound
+  root.onclick = e => piano.focus();
   piano.focus();
 });

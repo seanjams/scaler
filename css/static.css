@@ -1,21 +1,33 @@
 #root {
   text-align: center;
   background-image: url("../images/black-leather.jpg");
-  background-size: 100%;
+  background-size: 160vh;
   height: 100vh;
 }
 
-@font-face { font-family: Discovery; src: url("../fonts/Discovery/discovery.ttf"); }
+@font-face {
+  font-family: Discovery;
+  src: url("../fonts/Discovery/discovery.ttf");
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 
 .title {
   color: #aaa;
   font-family: 'Discovery';
   display: flex;
   justify-content: space-between;
+
 }
 .title h1 {
+  margin-top: 5%;
+  margin-left: auto;
+  margin-right: auto;
   display: inline-block;
-  flex: 10;
   position: relative;
   font-size: 60px;
   top: 14px;
@@ -38,10 +50,6 @@
   background: -webkit-linear-gradient(#eee, #333);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-}
-
-.title a {
-  flex: 1;
 }
 
 @keyframes twelvePulse {

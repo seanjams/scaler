@@ -11,22 +11,22 @@ class Clock extends React.Component {
     return newNotes;
   }
 
-  handleClick(i) {
-    const { notes } = this.props;
-    if (i < 5 && notes[i] && !notes[i+12]) {
-      return this.props.handleClick(i+12);
-    } else if (notes[i] && notes[i+12]) {
-      return this.props.handleClick(i, i+12);
-    }
-    return this.props.handleClick(i);
-  }
+  // handleClick(i) {
+  //   const { notes } = this.props;
+  //   if (i < 5 && notes[i] && !notes[i+12]) {
+  //     return this.props.handleClick(i+12);
+  //   } else if (notes[i] && notes[i+12]) {
+  //     return this.props.handleClick(i, i+12);
+  //   }
+  //   return this.props.handleClick(i);
+  // }
 
   renderNotes() {
     const center = { x: 125, y: 125 };
     const scaleRadius = 100;
     const newNotes = this.clockNotes();
     return newNotes.slice(0,12).map((note, i) => (
-      <button onClick={() => this.handleClick(i)}
+      <button onClick={() => this.props.handleClick(i)}
               key={`clock-${i}`}
               className={`note ${note ? "in-key" : ""} ${Util.noteNames[i]}`}
               onKeyDown={this.props.handleKeyDown}

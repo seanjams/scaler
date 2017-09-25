@@ -10312,7 +10312,7 @@ var Root = function (_React$Component) {
     _this.handleClick = _this.handleClick.bind(_this);
     _this.handleKeyDown = _this.handleKeyDown.bind(_this);
     _this.handleKeyUp = _this.handleKeyUp.bind(_this);
-    // this.toggleMute = this.toggleMute.bind(this);
+    _this.toggleMute = _this.toggleMute.bind(_this);
     return _this;
   }
 
@@ -10374,7 +10374,7 @@ var Root = function (_React$Component) {
           gains = _state.gains;
       var context = gains[i].context;
 
-      notes[i] = !!vol;
+      notes[i] = !notes[i];
       gains[i].gain.linearRampToValueAtTime(vol, context.currentTime + 0.18);
       this.setState({ notes: notes, gains: gains });
     }
@@ -10390,7 +10390,6 @@ var Root = function (_React$Component) {
   }, {
     key: 'handleKeyDown',
     value: function handleKeyDown(e) {
-      e.preventDefault();
       var idx = Util.keyMap.indexOf(e.key);
       if (idx >= 0) {
         this.changeSound(idx, this.state.vol);
@@ -10402,14 +10401,13 @@ var Root = function (_React$Component) {
   }, {
     key: 'handleKeyUp',
     value: function handleKeyUp(e) {
-      e.preventDefault();
       var idx = Util.keyMap.indexOf(e.key);
       if (idx >= 0) {
         this.changeSound(idx, 0);
       }
     }
 
-    //turns notes on and then off shortly after, used by clock and guitar
+    //turns notes on and then off shortly after
 
   }, {
     key: 'handleClick',
@@ -10427,6 +10425,15 @@ var Root = function (_React$Component) {
         _this3.setState({ notes: newNotes });
       }, 200);
     }
+  }, {
+    key: 'toggleMute',
+    value: function toggleMute(e) {
+      if (this.state.vol > 0) {
+        this.setState({ vol: 0 });
+      } else {
+        this.setState({ vol: 0.3 });
+      }
+    }
 
     // add click disabling in return perhaps
     //add mute!!
@@ -10436,7 +10443,7 @@ var Root = function (_React$Component) {
     value: function render() {
       return _react2.default.createElement(
         'div',
-        null,
+        { className: 'container' },
         _react2.default.createElement(
           'span',
           { className: 'title' },
@@ -10457,6 +10464,12 @@ var Root = function (_React$Component) {
               'a',
               { href: 'https://www.linkedin.com/in/seanvoreilly' },
               _react2.default.createElement('i', { id: 'linkedin-icon', className: 'fa fa-linkedin-square', 'aria-hidden': 'true' })
+            ),
+            _react2.default.createElement(
+              'button',
+              { onClick: this.toggleMute },
+              _react2.default.createElement('i', { id: 'linkedin-icon', className: 'fa fa-volume-' + (this.state.vol > 0 ? "down" : "off"),
+                'aria-hidden': 'true' })
             )
           )
         ),
@@ -10489,6 +10502,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
   //piano doesn't exist until DOM is rendered
   var piano = document.getElementById("piano-key-1");
+
+  //cannot focus away from piano, allows keys to always sound
+  root.onclick = function (e) {
+    return piano.focus();
+  };
   piano.focus();
 });
 
@@ -23167,18 +23185,17 @@ var Clock = function (_React$Component) {
       });
       return newNotes;
     }
-  }, {
-    key: 'handleClick',
-    value: function handleClick(i) {
-      var notes = this.props.notes;
 
-      if (i < 5 && notes[i] && !notes[i + 12]) {
-        return this.props.handleClick(i + 12);
-      } else if (notes[i] && notes[i + 12]) {
-        return this.props.handleClick(i, i + 12);
-      }
-      return this.props.handleClick(i);
-    }
+    // handleClick(i) {
+    //   const { notes } = this.props;
+    //   if (i < 5 && notes[i] && !notes[i+12]) {
+    //     return this.props.handleClick(i+12);
+    //   } else if (notes[i] && notes[i+12]) {
+    //     return this.props.handleClick(i, i+12);
+    //   }
+    //   return this.props.handleClick(i);
+    // }
+
   }, {
     key: 'renderNotes',
     value: function renderNotes() {
@@ -23191,7 +23208,7 @@ var Clock = function (_React$Component) {
         return _react2.default.createElement(
           'button',
           { onClick: function onClick() {
-              return _this2.handleClick(i);
+              return _this2.props.handleClick(i);
             },
             key: 'clock-' + i,
             className: 'note ' + (note ? "in-key" : "") + ' ' + Util.noteNames[i],
@@ -23785,27 +23802,19 @@ var Guitar = function (_React$Component) {
   }
 
   _createClass(Guitar, [{
-    key: 'handleClick',
-    value: function handleClick(i) {
-      var notes = this.props.notes;
-
-      if (i < 5 && notes[i] && !notes[i + 12]) {
-        return this.props.handleClick(i + 12);
-      } else if (notes[i] && notes[i + 12]) {
-        return this.props.handleClick(i, i + 12);
-      }
-      return this.props.handleClick(i);
-    }
-  }, {
     key: 'renderFrets',
     value: function renderFrets(stringName, n) {
       var _this2 = this;
 
       var noteShift = Util.noteNames.indexOf(stringName);
+
+      //map notes above 12th fret onto first 12 notes if not same already
       var newNotes = this.props.notes.slice(0, 12);
       this.props.notes.slice(12).forEach(function (note, i) {
         return newNotes[i] = newNotes[i] || note;
       });
+
+      //rotate notes around string shift
       for (var i = 0; i <= noteShift; i++) {
         var temp = newNotes.shift();
         newNotes.push(temp);
@@ -23819,7 +23828,7 @@ var Guitar = function (_React$Component) {
           },
 
           onClick: function onClick() {
-            return _this2.handleClick((i + 1 + noteShift) % 12);
+            return _this2.props.handleClick((i + 1 + noteShift) % 12);
           } });
       });
     }
@@ -23829,7 +23838,6 @@ var Guitar = function (_React$Component) {
       var _this3 = this;
 
       var strings = ["E", "B", "G", "D", "A", "E"];
-
       return strings.map(function (string, i) {
         return _react2.default.createElement(
           'div',
