@@ -12,6 +12,7 @@ class Piano extends React.Component {
           onKeyDown={this.props.handleKeyDown}
           onKeyUp={this.props.handleKeyUp}
           key={`piano-key-${i}`}
+          id={`piano-key-${i}`}
           className={`piano-key
             ${blackKeys.includes(i % 12) ? "black" : "white"}
             ${note ? "in-key" : ""}
@@ -24,7 +25,7 @@ class Piano extends React.Component {
 
   render() {
     return(
-      <div id="piano" className="piano-keys">
+      <div id="piano" tabIndex={0} className="piano-keys">
         { this.renderKeys() }
       </div>
     );

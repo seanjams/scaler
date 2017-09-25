@@ -10293,6 +10293,8 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+var AudioContext = window.AudioContext || window.webkitAudioContext;
+
 var Root = function (_React$Component) {
   _inherits(Root, _React$Component);
 
@@ -10344,17 +10346,26 @@ var Root = function (_React$Component) {
 
       this.letThereBeSound();
       var i = 0;
-      var interval = setInterval(function () {
-        i > 0 ? _this2.changeSound(i - 1, 0) : null;
-        _this2.changeSound(i, _this2.state.vol);
-        if (++i === 12) {
-          setTimeout(function () {
-            return _this2.changeSound(i - 1, 0);
-          }, 200);
-          window.clearInterval(interval);
-        }
-      }, 180);
+
+      setTimeout(function () {
+        var interval = setInterval(function () {
+          //if previous note was sounded, turn it off
+          i > 0 ? _this2.changeSound(i - 1, 0) : null;
+          //sound current note
+          _this2.changeSound(i, _this2.state.vol);
+          //if last note, turn off and clear interval
+          if (++i === 12) {
+            setTimeout(function () {
+              return _this2.changeSound(i - 1, 0);
+            }, 180);
+            window.clearInterval(interval);
+          }
+        }, 200);
+      }, 700);
     }
+
+    //changes note i to the specified volume vol
+
   }, {
     key: 'changeSound',
     value: function changeSound(i, vol) {
@@ -10364,7 +10375,7 @@ var Root = function (_React$Component) {
       var context = gains[i].context;
 
       notes[i] = !!vol;
-      gains[i].gain.linearRampToValueAtTime(vol, context.currentTime + 0.2);
+      gains[i].gain.linearRampToValueAtTime(vol, context.currentTime + 0.18);
       this.setState({ notes: notes, gains: gains });
     }
 
@@ -10374,24 +10385,32 @@ var Root = function (_React$Component) {
     //
     // }
 
+    //turns notes on, only used by piano
+
   }, {
     key: 'handleKeyDown',
     value: function handleKeyDown(e) {
       e.preventDefault();
       var idx = Util.keyMap.indexOf(e.key);
-      if (idx || idx === 0) {
+      if (idx >= 0) {
         this.changeSound(idx, this.state.vol);
       }
     }
+
+    //turns notes off, only used py piano
+
   }, {
     key: 'handleKeyUp',
     value: function handleKeyUp(e) {
       e.preventDefault();
       var idx = Util.keyMap.indexOf(e.key);
-      if (idx || idx === 0) {
+      if (idx >= 0) {
         this.changeSound(idx, 0);
       }
     }
+
+    //turns notes on and then off shortly after, used by clock and guitar
+
   }, {
     key: 'handleClick',
     value: function handleClick(i, j) {
@@ -10406,7 +10425,7 @@ var Root = function (_React$Component) {
       setTimeout(function () {
         _this3.changeSound(i, 0);
         _this3.setState({ notes: newNotes });
-      }, 100);
+      }, 200);
     }
 
     // add click disabling in return perhaps
@@ -10436,7 +10455,7 @@ var Root = function (_React$Component) {
             ),
             _react2.default.createElement(
               'a',
-              { href: '#' },
+              { href: 'https://www.linkedin.com/in/seanvoreilly' },
               _react2.default.createElement('i', { id: 'linkedin-icon', className: 'fa fa-linkedin-square', 'aria-hidden': 'true' })
             )
           )
@@ -10465,17 +10484,13 @@ var Root = function (_React$Component) {
 }(_react2.default.Component);
 
 document.addEventListener('DOMContentLoaded', function () {
-  var root = document.getElementById('root');
+  var root = document.getElementById("root");
   _reactDom2.default.render(_react2.default.createElement(Root, null), root);
-  var AudioContext = window.AudioContext || window.webkitAudioContext;
-  document.getElementById('piano').focus();
+
+  //piano doesn't exist until DOM is rendered
+  var piano = document.getElementById("piano-key-1");
+  piano.focus();
 });
-
-// window.onload =
-
-
-// <button onClick={this.toggleMute}>Mute</button>
-//
 
 /***/ }),
 /* 87 */
@@ -23703,6 +23718,7 @@ var Piano = function (_React$Component) {
             onKeyDown: _this2.props.handleKeyDown,
             onKeyUp: _this2.props.handleKeyUp,
             key: 'piano-key-' + i,
+            id: 'piano-key-' + i,
             className: 'piano-key\n            ' + (blackKeys.includes(i % 12) ? "black" : "white") + '\n            ' + (note ? "in-key" : "") + '\n            ' + Util.noteNames[i % 12] },
           _react2.default.createElement(
             'p',
@@ -23717,7 +23733,7 @@ var Piano = function (_React$Component) {
     value: function render() {
       return _react2.default.createElement(
         'div',
-        { id: 'piano', className: 'piano-keys' },
+        { id: 'piano', tabIndex: 0, className: 'piano-keys' },
         this.renderKeys()
       );
     }

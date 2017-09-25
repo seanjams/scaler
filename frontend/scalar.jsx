@@ -5,6 +5,8 @@ import Piano from './piano';
 import Guitar from './guitar';
 import * as Util from './util';
 
+const AudioContext = window.AudioContext || window.webkitAudioContext;
+
 class Root extends React.Component {
   constructor(props) {
     super(props);
@@ -43,22 +45,29 @@ class Root extends React.Component {
   componentDidMount() {
     this.letThereBeSound();
     let i = 0;
-    const interval = setInterval(() => {
-      i > 0 ? this.changeSound(i-1, 0): null;
-      this.changeSound(i, this.state.vol);
-      if (++i === 12) {
-        setTimeout(() => this.changeSound(i-1, 0), 200);
-        window.clearInterval(interval);
-      }
-    }, 180);
+
+    setTimeout(() => {
+      const interval = setInterval(() => {
+        //if previous note was sounded, turn it off
+        i > 0 ? this.changeSound(i-1, 0): null;
+        //sound current note
+        this.changeSound(i, this.state.vol);
+        //if last note, turn off and clear interval
+        if (++i === 12) {
+          setTimeout(() => this.changeSound(i-1, 0), 180);
+          window.clearInterval(interval);
+        }
+      }, 200);
+    }, 700);
   }
 
+  //changes note i to the specified volume vol
   changeSound(i, vol) {
     const { notes, gains } = this.state;
     const { context } = gains[i];
     notes[i] = !!vol;
     gains[i].gain
-      .linearRampToValueAtTime(vol, context.currentTime + 0.2);
+      .linearRampToValueAtTime(vol, context.currentTime + 0.18);
     this.setState({notes, gains});
   }
 
@@ -68,22 +77,25 @@ class Root extends React.Component {
   //
   // }
 
+  //turns notes on, only used by piano
   handleKeyDown(e) {
     e.preventDefault();
     let idx = Util.keyMap.indexOf(e.key);
-    if (idx || idx === 0) {
+    if (idx >= 0) {
       this.changeSound(idx, this.state.vol);
     }
   }
 
+  //turns notes off, only used py piano
   handleKeyUp(e) {
     e.preventDefault();
     let idx = Util.keyMap.indexOf(e.key);
-    if (idx || idx === 0) {
+    if (idx >= 0) {
       this.changeSound(idx, 0);
     }
   }
 
+  //turns notes on and then off shortly after, used by clock and guitar
   handleClick(i, j) {
     const newNotes = [...this.state.notes];
     const args = Array.from(arguments);
@@ -94,7 +106,7 @@ class Root extends React.Component {
     setTimeout(() => {
       this.changeSound(i, 0);
       this.setState({notes: newNotes});
-    }, 100);
+    }, 200);
   }
 
 // add click disabling in return perhaps
@@ -109,7 +121,7 @@ class Root extends React.Component {
             <a href="https://github.com/seanjams/Scalar">
               <i id="github-icon" className="fa fa-github-square" aria-hidden="true"></i>
             </a>
-            <a href="#">
+            <a href="https://www.linkedin.com/in/seanvoreilly">
               <i id="linkedin-icon" className="fa fa-linkedin-square" aria-hidden="true"></i>
             </a>
           </span>
@@ -134,16 +146,10 @@ class Root extends React.Component {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  const root = document.getElementById('root');
+  const root = document.getElementById("root");
   ReactDOM.render(<Root />, root);
-  const AudioContext = window.AudioContext || window.webkitAudioContext;
-  document.getElementById('piano').focus();
+
+  //piano doesn't exist until DOM is rendered
+  const piano = document.getElementById("piano-key-1");
+  piano.focus();
 });
-
-// window.onload =
-
-
-
-
-  // <button onClick={this.toggleMute}>Mute</button>
-//
