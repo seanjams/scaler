@@ -16,6 +16,8 @@ class Root extends React.Component {
       gains: [],
       vol: 0.3
     };
+
+    //binders for class functions
     this.handleClick = this.handleClick.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
     this.handleKeyUp = this.handleKeyUp.bind(this);
@@ -158,7 +160,7 @@ class Root extends React.Component {
   }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('load', () => {
   const root = document.getElementById("root");
   ReactDOM.render(<Root />, root);
 

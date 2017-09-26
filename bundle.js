@@ -10309,6 +10309,8 @@ var Root = function (_React$Component) {
       gains: [],
       vol: 0.3
     };
+
+    //binders for class functions
     _this.handleClick = _this.handleClick.bind(_this);
     _this.handleKeyDown = _this.handleKeyDown.bind(_this);
     _this.handleKeyUp = _this.handleKeyUp.bind(_this);
@@ -10501,7 +10503,7 @@ var Root = function (_React$Component) {
   return Root;
 }(_react2.default.Component);
 
-document.addEventListener('DOMContentLoaded', function () {
+window.addEventListener('load', function () {
   var root = document.getElementById("root");
   _reactDom2.default.render(_react2.default.createElement(Root, null), root);
 
