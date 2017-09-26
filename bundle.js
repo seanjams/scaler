@@ -4702,7 +4702,7 @@ var major = exports.major = [true, false, true, false, true, true, false, true, 
 
 var none = exports.none = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
 
-var noteNames = exports.noteNames = ["C", "Db", "D", "Eb", "E", "F", "Gb", "G", "Ab", "A", "Bb", "B", "C", "Db", "D", "Eb", "E", "F", "Gb", "G", "Ab", "A", "Bb", "B"];
+var noteNames = exports.noteNames = ["C", "D♭", "D", "E♭", "E", "F", "G♭", "G", "A♭", "A", "B♭", "B", "C", "D♭", "D", "E♭", "E", "F", "G♭", "G", "A♭", "A", "B♭", "B"];
 
 var keyMap = exports.keyMap = ["z", "s", "x", "d", "c", "v", "g", "b", "h", "n", "j", "m", ",", "l", ".", ";", "/"];
 
@@ -10450,11 +10450,22 @@ var Root = function (_React$Component) {
           _react2.default.createElement(
             'h1',
             null,
-            'Scalar'
+            'Scaler'
+          ),
+          _react2.default.createElement(
+            'p',
+            null,
+            'by Sean O\'Reilly'
           ),
           _react2.default.createElement(
             'span',
             { className: 'links' },
+            _react2.default.createElement(
+              'button',
+              { onClick: this.toggleMute },
+              _react2.default.createElement('i', { id: 'volume-icon', className: 'fa fa-volume-' + (this.state.vol > 0 ? "down" : "off"),
+                'aria-hidden': 'true' })
+            ),
             _react2.default.createElement(
               'a',
               { href: 'https://github.com/seanjams/Scalar' },
@@ -10464,12 +10475,6 @@ var Root = function (_React$Component) {
               'a',
               { href: 'https://www.linkedin.com/in/seanvoreilly' },
               _react2.default.createElement('i', { id: 'linkedin-icon', className: 'fa fa-linkedin-square', 'aria-hidden': 'true' })
-            ),
-            _react2.default.createElement(
-              'button',
-              { onClick: this.toggleMute },
-              _react2.default.createElement('i', { id: 'linkedin-icon', className: 'fa fa-volume-' + (this.state.vol > 0 ? "down" : "off"),
-                'aria-hidden': 'true' })
             )
           )
         ),

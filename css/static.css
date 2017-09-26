@@ -1,46 +1,53 @@
 #root {
   text-align: center;
   background-image: url("../images/black-leather.jpg");
+  background-repeat: repeat;
+  width: 100%;
   background-size: 160vh;
   height: 100vh;
 }
 
 @font-face {
-  font-family: Discovery;
-  src: url("../fonts/Discovery/discovery.ttf");
+  font-family: GreatVibes;
+  src: url("../fonts/GreatVibes-Regular.ttf");
 }
 
 .container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
 }
 
 .title {
   color: #aaa;
-  font-family: 'Discovery';
+  font-family: 'GreatVibes';
   display: flex;
-  justify-content: space-between;
-
+  justify-content: flex-start;
+  align-items: baseline;
+  margin: 0 auto;
+  width: 1000px;
 }
-.title h1 {
+
+h1 {
   margin-top: 3vh;
-  margin-left: auto;
-  margin-right: auto;
-  display: inline-block;
-  position: relative;
-  font-size: 50px;
-  top: 14px;
-  left: 30px;
+  padding-right: 0.5em;
+  font-size: 60px;
   background: -webkit-linear-gradient(#eee, #333);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.title .links {
+.title p {
+  font-size: 20px;
+}
+
+.links {
+  flex: 1;
   display: flex;
-  position: relative;
-  margin-right: 30px;
+  justify-content: flex-end;
+}
+
+.fa {
+  margin: 0 15px;
 }
 
 .title i {
@@ -152,7 +159,7 @@
   -webkit-animation-iteration-count: infinite;
 }
 
-.in-key.Db {
+.in-key.D♭ {
   -webkit-animation-name: twoPulse;
   -webkit-animation-duration: 0.9s;
   -webkit-animation-iteration-count: infinite;
@@ -164,7 +171,7 @@
   -webkit-animation-iteration-count: infinite;
 }
 
-.in-key.Eb {
+.in-key.E♭ {
   -webkit-animation-name: fourPulse;
   -webkit-animation-duration: 0.9s;
   -webkit-animation-iteration-count: infinite;
@@ -182,7 +189,7 @@
   -webkit-animation-iteration-count: infinite;
 }
 
-.in-key.Gb {
+.in-key.G♭ {
   -webkit-animation-name: sevenPulse;
   -webkit-animation-duration: 0.9s;
   -webkit-animation-iteration-count: infinite;
@@ -194,7 +201,7 @@
   -webkit-animation-iteration-count: infinite;
 }
 
-.in-key.Ab {
+.in-key.A♭ {
   -webkit-animation-name: ninePulse;
   -webkit-animation-duration: 0.9s;
   -webkit-animation-iteration-count: infinite;
@@ -206,7 +213,7 @@
   -webkit-animation-iteration-count: infinite;
 }
 
-.in-key.Bb {
+.in-key.B♭ {
   -webkit-animation-name: elevenPulse;
   -webkit-animation-duration: 0.9s;
   -webkit-animation-iteration-count: infinite;

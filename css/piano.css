@@ -7,8 +7,7 @@
 
 .piano-keys {
   margin: 0 auto;
-  margin-top: 130px;
-  display: inline-block;
+  margin-top: 110px;
   border: 5px solid #0c0c0c;
   box-shadow: 0 0 50px 25px rgba(3,3,3,100), inset 0 0 22px 8px rgba(3,3,3,100);
   border-top-left-radius: 40px;
@@ -25,8 +24,7 @@
 }
 
 .white {
-  background: #e3e3e3;
-  display: inline-block;
+  background: #e1e1e1;
   width: 60px;
   height: 200px;
   z-index: 0;

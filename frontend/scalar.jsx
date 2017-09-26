@@ -122,20 +122,21 @@ class Root extends React.Component {
     return (
       <div className="container">
         <span className="title">
-          <h1>Scalar</h1>
+          <h1>Scaler</h1>
+          <p>by Sean O'Reilly</p>
           <span className="links">
+            <button onClick={this.toggleMute}>
+              <i id="volume-icon" className={
+                  `fa fa-volume-${this.state.vol > 0 ? "down" : "off"}`
+                }
+                aria-hidden="true"></i>
+            </button>
             <a href="https://github.com/seanjams/Scalar">
               <i id="github-icon" className="fa fa-github-square" aria-hidden="true"></i>
             </a>
             <a href="https://www.linkedin.com/in/seanvoreilly">
               <i id="linkedin-icon" className="fa fa-linkedin-square" aria-hidden="true"></i>
             </a>
-            <button onClick={this.toggleMute}>
-              <i id="linkedin-icon" className={
-                  `fa fa-volume-${this.state.vol > 0 ? "down" : "off"}`
-                }
-                aria-hidden="true"></i>
-            </button>
           </span>
         </span>
         <Guitar notes={this.state.notes}
