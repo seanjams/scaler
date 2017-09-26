@@ -1,9 +1,7 @@
 .clock {
-  display: inline-block;
-  margin: auto;
+  margin: 0 auto;
   margin-top: 80px;
   width: 250px;
-  height: 250px;
   position: relative;
 }
 

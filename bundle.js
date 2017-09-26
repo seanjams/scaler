@@ -23750,7 +23750,7 @@ var Piano = function (_React$Component) {
     value: function render() {
       return _react2.default.createElement(
         'div',
-        { id: 'piano', tabIndex: 0, className: 'piano-keys' },
+        { id: 'piano', className: 'piano-keys' },
         this.renderKeys()
       );
     }

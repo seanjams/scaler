@@ -25,7 +25,7 @@ class Piano extends React.Component {
 
   render() {
     return(
-      <div id="piano" tabIndex={0} className="piano-keys">
+      <div id="piano" className="piano-keys">
         { this.renderKeys() }
       </div>
     );
