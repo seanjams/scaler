@@ -1,6 +1,6 @@
 # Scaler
 
-https://seanjams.github.io/Scaler/
+https://seanjams.github.io/Scalar/
 
 Scaler is a web application built in Javascript/React where guitarists and pianists can both hear and visualize musical notes, chords and scales on each instrument simultaneously.
 
