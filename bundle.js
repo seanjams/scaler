@@ -10450,7 +10450,7 @@ var Root = function (_React$Component) {
           _react2.default.createElement(
             'h1',
             null,
-            'Scaler'
+            'Scalar'
           ),
           _react2.default.createElement(
             'p',

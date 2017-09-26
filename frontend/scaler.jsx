@@ -122,7 +122,7 @@ class Root extends React.Component {
     return (
       <div className="container">
         <span className="title">
-          <h1>Scaler</h1>
+          <h1>Scalar</h1>
           <p>by Sean O'Reilly</p>
           <span className="links">
             <button onClick={this.toggleMute}>
