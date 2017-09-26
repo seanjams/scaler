@@ -1,8 +1,8 @@
 {
-  "name": "Scalar",
+  "name": "Scaler",
   "version": "1.0.0",
   "description": "",
-  "main": "frontend/scalar.jsx",
+  "main": "frontend/scaler.jsx",
   "scripts": {
     "postinstall": "webpack",
     "start": "webpack -w",

@@ -1,8 +1,8 @@
-## Scalar
+## Scaler
 
 ### Background
 
-The vast majority of music we know and love only contains 12 notes. However, the different layouts chosen to represent these notes on instruments are diverse and numerous. Scalar provides a set of musical widgets for visualizing the layouts of musical notes, chords, and scales, on two of the most common melodic instruments, piano and guitar.
+The vast majority of music we know and love only contains 12 notes. However, the different layouts chosen to represent these notes on instruments are diverse and numerous. Scaler provides a set of musical widgets for visualizing the layouts of musical notes, chords, and scales, on two of the most common melodic instruments, piano and guitar.
 
 ### Functionality & MVP
 

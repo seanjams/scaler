@@ -131,7 +131,7 @@ class Root extends React.Component {
                 }
                 aria-hidden="true"></i>
             </button>
-            <a href="https://github.com/seanjams/Scalar">
+            <a href="https://github.com/seanjams/Scaler">
               <i id="github-icon" className="fa fa-github-square" aria-hidden="true"></i>
             </a>
             <a href="https://www.linkedin.com/in/seanvoreilly">
