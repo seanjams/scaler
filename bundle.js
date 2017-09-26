@@ -10468,7 +10468,7 @@ var Root = function (_React$Component) {
             ),
             _react2.default.createElement(
               'a',
-              { href: 'https://github.com/seanjams/Scaler' },
+              { href: 'https://github.com/seanjams/Scalar' },
               _react2.default.createElement('i', { id: 'github-icon', className: 'fa fa-github-square', 'aria-hidden': 'true' })
             ),
             _react2.default.createElement(
