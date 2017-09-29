@@ -62,7 +62,6 @@ export const noteNames = [
   "B"
 ];
 
-
 export const keyMap = [
   "z",
   "s",

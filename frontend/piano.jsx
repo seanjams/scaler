@@ -2,7 +2,7 @@ import React from 'react';
 import * as Util from './util';
 
 class Piano extends React.Component {
-  
+
   renderKeys(octave) {
     const blackKeys = [1,3,6,8,10];
     return this.props.notes.map((note, i) => {

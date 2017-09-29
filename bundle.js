@@ -10325,7 +10325,12 @@ var Root = function (_React$Component) {
           frequencies = Util.frequencies;
 
       var gains = [];
+
+      //create Web Audio API context
       var context = new AudioContext();
+
+      //create oscillators and connect them to new gain nodes
+      //intiliaze volume to 0 as and frequency to actual note frequencies
       var oscillators = Util.pianoKeyNames.map(function (name) {
         var nextEl = context.createOscillator();
         var nextGain = context.createGain();
@@ -10346,24 +10351,28 @@ var Root = function (_React$Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
+      //intialize state and oscillator nodes for sound
       this.letThereBeSound();
       var i = 0;
 
       setTimeout(function () {
+        var i = 0;
         var interval = setInterval(function () {
-          //if previous note was sounded, turn it off
-          i > 0 ? _this2.changeSound(i - 1, 0) : null;
           //sound current note
-          _this2.changeSound(i, _this2.state.vol);
-          //if last note, turn off and clear interval
-          if (++i === 12) {
-            setTimeout(function () {
-              return _this2.changeSound(i - 1, 0);
-            }, 180);
+          _this2.changeSound(i, _this2.state.vol, 0.13);
+          //shut off current note after duration of note and increment counter
+          setTimeout(function () {
+            _this2.changeSound(i, 0, 0.07);
+            ++i;
+          }, 130);
+
+          //clear interval if last note
+          if (i === 11) {
             window.clearInterval(interval);
+            _this2.setState({ notes: Util.none });
           }
         }, 200);
-      }, 700);
+      }, 500);
     }
 
     //changes note i to the specified volume vol
@@ -10371,21 +10380,16 @@ var Root = function (_React$Component) {
   }, {
     key: 'changeSound',
     value: function changeSound(i, vol) {
+      var attack = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0.1;
       var _state = this.state,
           notes = _state.notes,
           gains = _state.gains;
       var context = gains[i].context;
 
-      notes[i] = !notes[i];
-      gains[i].gain.linearRampToValueAtTime(vol, context.currentTime + 0.18);
+      notes[i] = !!vol;
+      gains[i].gain.linearRampToValueAtTime(vol, context.currentTime + attack);
       this.setState({ notes: notes, gains: gains });
     }
-
-    // toggleMute() {
-    //   const vol = this.state.vol ? 0 : 0.3;
-    //   this.setState({vol});
-    //
-    // }
 
     //turns notes on, only used by piano
 
@@ -10413,11 +10417,19 @@ var Root = function (_React$Component) {
 
   }, {
     key: 'handleClick',
-    value: function handleClick(i, j) {
+    value: function handleClick() {
       var _this3 = this;
 
       var newNotes = [].concat(_toConsumableArray(this.state.notes));
-      var args = Array.from(arguments);
+
+      for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+        args[_key] = arguments[_key];
+      }
+
+      var i = args[0],
+          j = args[1];
+
+
       args.forEach(function (idx) {
         return newNotes[idx] = !newNotes[idx];
       });
@@ -10436,10 +10448,6 @@ var Root = function (_React$Component) {
         this.setState({ vol: 0.3 });
       }
     }
-
-    // add click disabling in return perhaps
-    //add mute!!
-
   }, {
     key: 'render',
     value: function render() {

@@ -27,7 +27,12 @@ class Root extends React.Component {
   letThereBeSound() {
     const { pianoKeyNames, frequencies } = Util;
     const gains = [];
+
+    //create Web Audio API context
     const context = new AudioContext();
+
+    //create oscillators and connect them to new gain nodes
+    //intiliaze volume to 0 as and frequency to actual note frequencies
     const oscillators = Util.pianoKeyNames.map((name) => {
       let nextEl = context.createOscillator();
       let nextGain = context.createGain();
@@ -45,39 +50,39 @@ class Root extends React.Component {
   }
 
   componentDidMount() {
+    //intialize state and oscillator nodes for sound
     this.letThereBeSound();
     let i = 0;
 
     setTimeout(() => {
+      let i = 0;
       const interval = setInterval(() => {
-        //if previous note was sounded, turn it off
-        i > 0 ? this.changeSound(i-1, 0): null;
         //sound current note
-        this.changeSound(i, this.state.vol);
-        //if last note, turn off and clear interval
-        if (++i === 12) {
-          setTimeout(() => this.changeSound(i-1, 0), 180);
+        this.changeSound(i, this.state.vol, 0.13)
+        //shut off current note after duration of note and increment counter
+        setTimeout(() => {
+          this.changeSound(i, 0, 0.07);
+          ++i;
+        }, 130);
+
+        //clear interval if last note
+        if (i === 11) {
           window.clearInterval(interval);
+          this.setState({notes: Util.none});
         }
       }, 200);
-    }, 700);
+    }, 500);
   }
 
   //changes note i to the specified volume vol
-  changeSound(i, vol) {
+  changeSound(i, vol, attack = 0.1) {
     const { notes, gains } = this.state;
     const { context } = gains[i];
-    notes[i] = !notes[i];
+    notes[i] = !!vol;
     gains[i].gain
-      .linearRampToValueAtTime(vol, context.currentTime + 0.18);
+      .linearRampToValueAtTime(vol, context.currentTime + attack);
     this.setState({notes, gains});
   }
-
-  // toggleMute() {
-  //   const vol = this.state.vol ? 0 : 0.3;
-  //   this.setState({vol});
-  //
-  // }
 
   //turns notes on, only used by piano
   handleKeyDown(e) {
@@ -96,9 +101,10 @@ class Root extends React.Component {
   }
 
   //turns notes on and then off shortly after
-  handleClick(i, j) {
+  handleClick(...args) {
     const newNotes = [...this.state.notes];
-    const args = Array.from(arguments);
+    const [i,j] = args;
+
     args.forEach(idx => (
       newNotes[idx] = !newNotes[idx]
     ));
@@ -117,9 +123,6 @@ class Root extends React.Component {
     }
   }
 
-// add click disabling in return perhaps
-//add mute!!
-
   render() {
     return (
       <div className="container">
@@ -128,9 +131,10 @@ class Root extends React.Component {
           <p>by Sean O'Reilly</p>
           <span className="links">
             <button onClick={this.toggleMute}>
-              <i id="volume-icon" className={
-                  `fa fa-volume-${this.state.vol > 0 ? "down" : "off"}`
-                }
+              <i id="volume-icon" className={`fa fa-volume-${
+                  this.state.vol > 0
+                                 ? "down"
+                                 : "off" }`}
                 aria-hidden="true"></i>
             </button>
             <a href="https://github.com/seanjams/Scalar">
