@@ -4733,6 +4733,22 @@ var frequencies = exports.frequencies = {
   "A5": new _octavian2.default.Note("A5").frequency,
   "Bb5": new _octavian2.default.Note("Bb5").frequency,
   "B5": new _octavian2.default.Note("B5").frequency
+
+  //modular click function logic
+  //if i am clicked and my octave isnt, click my octave
+  //if i am clicked and my octave is clicked, unclick us both
+  //if neither of us are clicked, click me only
+
+  // handleClick(i) {
+  //   const { notes } = this.props;
+  //   if (i < 5 && notes[i] && !notes[i+12]) {
+  //     return this.props.handleClick(i+12);
+  //   } else if (notes[i] && notes[i+12]) {
+  //     return this.props.handleClick(i, i+12);
+  //   }
+  //   return this.props.handleClick(i);
+  // }
+
 };
 
 /***/ }),
@@ -10307,7 +10323,8 @@ var Root = function (_React$Component) {
       notes: Util.none,
       oscillators: [],
       gains: [],
-      vol: 0.3
+      vol: 0.3,
+      mute: false
     };
 
     //binders for class functions
@@ -10379,14 +10396,16 @@ var Root = function (_React$Component) {
 
   }, {
     key: 'changeSound',
-    value: function changeSound(i, vol) {
+    value: function changeSound(i, volume) {
       var attack = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0.1;
       var _state = this.state,
           notes = _state.notes,
           gains = _state.gains;
+
+      var vol = this.state.mute ? 0 : volume;
       var context = gains[i].context;
 
-      notes[i] = !!vol;
+      notes[i] = !!volume;
       gains[i].gain.linearRampToValueAtTime(vol, context.currentTime + attack);
       this.setState({ notes: notes, gains: gains });
     }
@@ -10441,12 +10460,9 @@ var Root = function (_React$Component) {
     }
   }, {
     key: 'toggleMute',
-    value: function toggleMute(e) {
-      if (this.state.vol > 0) {
-        this.setState({ vol: 0 });
-      } else {
-        this.setState({ vol: 0.3 });
-      }
+    value: function toggleMute() {
+      var mute = !this.state.mute;
+      this.setState({ mute: mute });
     }
   }, {
     key: 'render',
@@ -10473,7 +10489,7 @@ var Root = function (_React$Component) {
             _react2.default.createElement(
               'button',
               { onClick: this.toggleMute },
-              _react2.default.createElement('i', { id: 'volume-icon', className: 'fa fa-volume-' + (this.state.vol > 0 ? "down" : "off"),
+              _react2.default.createElement('i', { id: 'volume-icon', className: 'fa fa-volume-' + (!this.state.mute ? "down" : "off"),
                 'aria-hidden': 'true' })
             ),
             _react2.default.createElement(
@@ -23200,17 +23216,6 @@ var Clock = function (_React$Component) {
       });
       return newNotes;
     }
-
-    // handleClick(i) {
-    //   const { notes } = this.props;
-    //   if (i < 5 && notes[i] && !notes[i+12]) {
-    //     return this.props.handleClick(i+12);
-    //   } else if (notes[i] && notes[i+12]) {
-    //     return this.props.handleClick(i, i+12);
-    //   }
-    //   return this.props.handleClick(i);
-    // }
-
   }, {
     key: 'renderNotes',
     value: function renderNotes() {

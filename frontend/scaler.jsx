@@ -14,7 +14,8 @@ class Root extends React.Component {
       notes: Util.none,
       oscillators: [],
       gains: [],
-      vol: 0.3
+      vol: 0.3,
+      mute: false
     };
 
     //binders for class functions
@@ -75,10 +76,11 @@ class Root extends React.Component {
   }
 
   //changes note i to the specified volume vol
-  changeSound(i, vol, attack = 0.1) {
+  changeSound(i, volume, attack = 0.1) {
     const { notes, gains } = this.state;
+    const vol = this.state.mute ? 0 : volume;
     const { context } = gains[i];
-    notes[i] = !!vol;
+    notes[i] = !!volume;
     gains[i].gain
       .linearRampToValueAtTime(vol, context.currentTime + attack);
     this.setState({notes, gains});
@@ -115,12 +117,9 @@ class Root extends React.Component {
     }, 200);
   }
 
-  toggleMute(e) {
-    if (this.state.vol > 0) {
-      this.setState({vol: 0});
-    } else {
-      this.setState({vol: 0.3});
-    }
+  toggleMute() {
+    const mute = !this.state.mute;
+    this.setState({mute});
   }
 
   render() {
@@ -132,9 +131,8 @@ class Root extends React.Component {
           <span className="links">
             <button onClick={this.toggleMute}>
               <i id="volume-icon" className={`fa fa-volume-${
-                  this.state.vol > 0
-                                 ? "down"
-                                 : "off" }`}
+                  !this.state.mute ? "down" : "off"
+                }`}
                 aria-hidden="true"></i>
             </button>
             <a href="https://github.com/seanjams/Scalar">
