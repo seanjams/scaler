@@ -54,7 +54,7 @@
   display: inline-block;
   width: 30px;
   height: 120px;
-  z-index: 2;
+  z-index: 1;
   margin-left: -15px;
   box-shadow: inset 0 -3px 5px 4px #666;
   border-bottom-left-radius: 5px;

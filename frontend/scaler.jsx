@@ -15,14 +15,20 @@ class Root extends React.Component {
       oscillators: [],
       gains: [],
       vol: 0.3,
-      mute: false
+      mute: false,
+      modalOpen: false,
+      singleNoteMode: false,
+      range: 3
     };
 
     //binders for class functions
     this.handleClick = this.handleClick.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
     this.handleKeyUp = this.handleKeyUp.bind(this);
+    this.incrementRange = this.incrementRange.bind(this);
     this.toggleMute = this.toggleMute.bind(this);
+    this.toggleModal = this.toggleModal.bind(this);
+    this.toggleSingleNoteMode = this.toggleSingleNoteMode.bind(this);
   }
 
   letThereBeSound() {
@@ -117,23 +123,75 @@ class Root extends React.Component {
     }, 200);
   }
 
+  incrementRange(a) {
+    let range = this.state.range + a;
+    if (range < -1) {
+      range = -1;
+    } else if (range > 7) {
+      range = 7;
+    }
+    this.setState({range});
+  }
+
+  toggleSingleNoteMode() {
+    const singleNoteMode = !this.state.singleNoteMode;
+    this.setState({singleNoteMode});
+  }
+
   toggleMute() {
     const mute = !this.state.mute;
     this.setState({mute});
   }
 
+  toggleModal() {
+    const modalOpen = !this.state.modalOpen;
+    this.setState({modalOpen});
+  }
+
+  renderInstructions() {
+    if (this.state.modalOpen) {
+      return (
+        <div id="modal">
+          <h2>"This is my Modal Text"</h2>
+          <button onClick={this.toggleModal}>Close</button>
+        </div>
+      )
+    }
+  }
+
+  renderPatternShifter() {
+    const { singleNoteMode } = this.state;
+    const arrowClass = singleNoteMode ? "" : "arrow-off";
+    return (
+      <div className="pattern-shifter-container">
+        <div className="pattern-shifter">
+          <button onClick={() => this.incrementRange(-1)} className={arrowClass} disabled={!singleNoteMode}>
+            <i id="pattern-left" className="fa fa-chevron-left pattern-arrow" aria-hidden="true"></i>
+          </button>
+          <button id="mode-selector" onClick={this.toggleSingleNoteMode}>
+            <p>{ this.state.singleNoteMode ? "All Notes" : "Pattern Mode" }</p>
+          </button>
+          <button onClick={() => this.incrementRange(1)} className={arrowClass} disabled={!singleNoteMode}>
+            <i id="pattern-right" className="fa fa-chevron-right pattern-arrow" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+    )
+  }
+
   render() {
     return (
       <div className="container">
+        { this.renderInstructions() }
         <span className="title">
-          <h1>Scalar</h1>
-          <p>by Sean O'Reilly</p>
-          <span className="links">
+          <span id="title-author">
+            <h1>Scalar</h1>
+            <p>by Sean O'Reilly</p>
+          </span>
+          <div id="links">
+            <button id="instructions" onClick={this.toggleModal}>How it Works</button>
             <button onClick={this.toggleMute}>
-              <i id="volume-icon" className={`fa fa-volume-${
-                  !this.state.mute ? "down" : "off"
-                }`}
-                aria-hidden="true"></i>
+              <i id="volume-icon" className={`fa fa-volume-${!this.state.mute ? "down" : "off"}`} aria-hidden="true"></i>
             </button>
             <a href="https://github.com/seanjams/Scalar">
               <i id="github-icon" className="fa fa-github-square" aria-hidden="true"></i>
@@ -141,12 +199,15 @@ class Root extends React.Component {
             <a href="https://www.linkedin.com/in/seanvoreilly">
               <i id="linkedin-icon" className="fa fa-linkedin-square" aria-hidden="true"></i>
             </a>
-          </span>
+          </div>
         </span>
+        { this.renderPatternShifter() }
         <Guitar notes={this.state.notes}
                 handleKeyUp={this.handleKeyUp}
                 handleKeyDown={this.handleKeyDown}
-                handleClick={this.handleClick}/>
+                handleClick={this.handleClick}
+                singleNoteMode={this.state.singleNoteMode}
+                range={this.state.range}/>
         <div className="piano-clock-container">
           <Piano notes={this.state.notes}
                  handleKeyUp={this.handleKeyUp}

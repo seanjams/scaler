@@ -5,8 +5,9 @@ class Guitar extends React.Component {
 
   renderFrets(stringName, n) {
     const noteShift = Util.noteNames.indexOf(stringName);
+    const { range } = this.props;
 
-    //map notes above 12th fret onto first 12 notes if not same already
+    //map high octave notes on keyboard to guitar
     const newNotes = this.props.notes.slice(0,12);
     this.props.notes.slice(12).forEach((note, i) => (
       newNotes[i] = newNotes[i] || note
@@ -17,6 +18,17 @@ class Guitar extends React.Component {
       let temp = newNotes.shift();
       newNotes.push(temp);
     }
+
+    if (this.props.singleNoteMode) {
+      for (let i = 0; i < 12; i++) {
+        if (n > 2) {
+          if (i < range || i > range + 4) { newNotes[i] = false }
+        } else {
+          if (i < range + 1 || i > range + 5) { newNotes[i] = false }
+        }
+      }
+    }
+
     return newNotes.map((note, i) => (
         <button key={`fret-${i}`}
                 className={

@@ -10324,14 +10324,20 @@ var Root = function (_React$Component) {
       oscillators: [],
       gains: [],
       vol: 0.3,
-      mute: false
+      mute: false,
+      modalOpen: false,
+      singleNoteMode: false,
+      range: 3
     };
 
     //binders for class functions
     _this.handleClick = _this.handleClick.bind(_this);
     _this.handleKeyDown = _this.handleKeyDown.bind(_this);
     _this.handleKeyUp = _this.handleKeyUp.bind(_this);
+    _this.incrementRange = _this.incrementRange.bind(_this);
     _this.toggleMute = _this.toggleMute.bind(_this);
+    _this.toggleModal = _this.toggleModal.bind(_this);
+    _this.toggleSingleNoteMode = _this.toggleSingleNoteMode.bind(_this);
     return _this;
   }
 
@@ -10459,10 +10465,93 @@ var Root = function (_React$Component) {
       }, 200);
     }
   }, {
+    key: 'incrementRange',
+    value: function incrementRange(a) {
+      var range = this.state.range + a;
+      if (range < -1) {
+        range = -1;
+      } else if (range > 7) {
+        range = 7;
+      }
+      this.setState({ range: range });
+    }
+  }, {
+    key: 'toggleSingleNoteMode',
+    value: function toggleSingleNoteMode() {
+      var singleNoteMode = !this.state.singleNoteMode;
+      this.setState({ singleNoteMode: singleNoteMode });
+    }
+  }, {
     key: 'toggleMute',
     value: function toggleMute() {
       var mute = !this.state.mute;
       this.setState({ mute: mute });
+    }
+  }, {
+    key: 'toggleModal',
+    value: function toggleModal() {
+      var modalOpen = !this.state.modalOpen;
+      this.setState({ modalOpen: modalOpen });
+    }
+  }, {
+    key: 'renderInstructions',
+    value: function renderInstructions() {
+      if (this.state.modalOpen) {
+        return _react2.default.createElement(
+          'div',
+          { id: 'modal' },
+          _react2.default.createElement(
+            'h2',
+            null,
+            '"This is my Modal Text"'
+          ),
+          _react2.default.createElement(
+            'button',
+            { onClick: this.toggleModal },
+            'Close'
+          )
+        );
+      }
+    }
+  }, {
+    key: 'renderPatternShifter',
+    value: function renderPatternShifter() {
+      var _this4 = this;
+
+      var singleNoteMode = this.state.singleNoteMode;
+
+      var arrowClass = singleNoteMode ? "" : "arrow-off";
+      return _react2.default.createElement(
+        'div',
+        { className: 'pattern-shifter-container' },
+        _react2.default.createElement(
+          'div',
+          { className: 'pattern-shifter' },
+          _react2.default.createElement(
+            'button',
+            { onClick: function onClick() {
+                return _this4.incrementRange(-1);
+              }, className: arrowClass, disabled: !singleNoteMode },
+            _react2.default.createElement('i', { id: 'pattern-left', className: 'fa fa-chevron-left pattern-arrow', 'aria-hidden': 'true' })
+          ),
+          _react2.default.createElement(
+            'button',
+            { id: 'mode-selector', onClick: this.toggleSingleNoteMode },
+            _react2.default.createElement(
+              'p',
+              null,
+              this.state.singleNoteMode ? "All Notes" : "Pattern Mode"
+            )
+          ),
+          _react2.default.createElement(
+            'button',
+            { onClick: function onClick() {
+                return _this4.incrementRange(1);
+              }, className: arrowClass, disabled: !singleNoteMode },
+            _react2.default.createElement('i', { id: 'pattern-right', className: 'fa fa-chevron-right pattern-arrow', 'aria-hidden': 'true' })
+          )
+        )
+      );
     }
   }, {
     key: 'render',
@@ -10470,27 +10559,36 @@ var Root = function (_React$Component) {
       return _react2.default.createElement(
         'div',
         { className: 'container' },
+        this.renderInstructions(),
         _react2.default.createElement(
           'span',
           { className: 'title' },
           _react2.default.createElement(
-            'h1',
-            null,
-            'Scalar'
-          ),
-          _react2.default.createElement(
-            'p',
-            null,
-            'by Sean O\'Reilly'
-          ),
-          _react2.default.createElement(
             'span',
-            { className: 'links' },
+            { id: 'title-author' },
+            _react2.default.createElement(
+              'h1',
+              null,
+              'Scalar'
+            ),
+            _react2.default.createElement(
+              'p',
+              null,
+              'by Sean O\'Reilly'
+            )
+          ),
+          _react2.default.createElement(
+            'div',
+            { id: 'links' },
+            _react2.default.createElement(
+              'button',
+              { id: 'instructions', onClick: this.toggleModal },
+              'How it Works'
+            ),
             _react2.default.createElement(
               'button',
               { onClick: this.toggleMute },
-              _react2.default.createElement('i', { id: 'volume-icon', className: 'fa fa-volume-' + (!this.state.mute ? "down" : "off"),
-                'aria-hidden': 'true' })
+              _react2.default.createElement('i', { id: 'volume-icon', className: 'fa fa-volume-' + (!this.state.mute ? "down" : "off"), 'aria-hidden': 'true' })
             ),
             _react2.default.createElement(
               'a',
@@ -10504,10 +10602,13 @@ var Root = function (_React$Component) {
             )
           )
         ),
+        this.renderPatternShifter(),
         _react2.default.createElement(_guitar2.default, { notes: this.state.notes,
           handleKeyUp: this.handleKeyUp,
           handleKeyDown: this.handleKeyDown,
-          handleClick: this.handleClick }),
+          handleClick: this.handleClick,
+          singleNoteMode: this.state.singleNoteMode,
+          range: this.state.range }),
         _react2.default.createElement(
           'div',
           { className: 'piano-clock-container' },
@@ -23827,8 +23928,10 @@ var Guitar = function (_React$Component) {
       var _this2 = this;
 
       var noteShift = Util.noteNames.indexOf(stringName);
+      var range = this.props.range;
 
-      //map notes above 12th fret onto first 12 notes if not same already
+      //map high octave notes on keyboard to guitar
+
       var newNotes = this.props.notes.slice(0, 12);
       this.props.notes.slice(12).forEach(function (note, i) {
         return newNotes[i] = newNotes[i] || note;
@@ -23839,6 +23942,21 @@ var Guitar = function (_React$Component) {
         var temp = newNotes.shift();
         newNotes.push(temp);
       }
+
+      if (this.props.singleNoteMode) {
+        for (var _i = 0; _i < 12; _i++) {
+          if (n > 2) {
+            if (_i < range || _i > range + 4) {
+              newNotes[_i] = false;
+            }
+          } else {
+            if (_i < range + 1 || _i > range + 5) {
+              newNotes[_i] = false;
+            }
+          }
+        }
+      }
+
       return newNotes.map(function (note, i) {
         return _react2.default.createElement('button', { key: 'fret-' + i,
           className: 'fret ' + (note ? "in-key" : "") + ' ' + Util.noteNames[i + 1 + noteShift],

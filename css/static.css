@@ -1,3 +1,8 @@
+@font-face {
+  font-family: GreatVibes;
+  src: url("../fonts/GreatVibes-Regular.ttf");
+}
+
 #root {
   text-align: center;
   background-image: url("../images/black-leather.jpg");
@@ -7,9 +12,15 @@
   height: 100vh;
 }
 
-@font-face {
-  font-family: GreatVibes;
-  src: url("../fonts/GreatVibes-Regular.ttf");
+#modal {
+  position: absolute;
+  z-index: 2;
+  width: 60vw;
+  height: 60vh;
+  margin-left: 20vw;
+  margin-top: 20vh;
+  color: pink;
+  background: #555;
 }
 
 .container {
@@ -17,18 +28,27 @@
   flex-direction: column;
 }
 
+.fa {
+  margin: 0 0.5em;
+}
+
 .title {
   color: #aaa;
   font-family: 'GreatVibes';
+  font-size: 20px;
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: baseline;
   margin: 0 auto;
   width: 1000px;
 }
 
-h1 {
+#title-author {
   margin-top: 3vh;
+}
+
+.title h1 {
+  display: inline;
   padding-right: 0.5em;
   font-size: 60px;
   background: -webkit-linear-gradient(#eee, #333);
@@ -36,25 +56,82 @@ h1 {
   -webkit-text-fill-color: transparent;
 }
 
-.title p {
-  font-size: 20px;
+.title i {
+  font-size: 30px;
+  background: -webkit-linear-gradient(#eee, #333);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-.links {
-  flex: 1;
+.title p {
+  display: inline;
+  background: -webkit-linear-gradient(#eee, #333);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+#links {
   display: flex;
   justify-content: flex-end;
 }
 
-.fa {
-  margin: 0 15px;
+#volume-icon {
+  width: 20px;
 }
 
-.title i {
-  font-size: 40px;
-  background: -webkit-linear-gradient(#eee, #333);
+#instructions {
+  margin-right: 1em;
+  transition: all .15s ease-in-out;
+}
+
+.pattern-shifter-container {
+  z-index: 1;
+  width: 1000px;
+  height: 0px;
+  font-family: 'GreatVibes';
+  margin: 0 auto;
+}
+
+.pattern-shifter {
+  position: relative;
+  width: 250px;
+  margin-left: auto;
+  top: 65px;
+  display: flex;
+  font-size: 34px;
+  justify-content: center;
+}
+
+#mode-selector {
+  flex: 2;
+  margin: auto 0;
+  padding-right: 5px;
+  font-weight: bold;
+  text-shadow: 1em;
+  background: -webkit-linear-gradient(#ffc902, #94742c);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  transition: all .15s ease-in-out;
+}
+
+#mode-selector:hover, #instructions:hover {
+  transform: scale(1.05);
+}
+
+.pattern-arrow {
+  flex: 1;
+  font-size: 24px;
+  background: -webkit-linear-gradient(#ffc902, #94742c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.arrow-off i {
+  display: none;
+}
+
+.arrow-off:hover {
+  cursor: default;
 }
 
 @keyframes twelvePulse {
