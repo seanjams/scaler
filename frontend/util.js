@@ -100,13 +100,6 @@ export const pianoKeyNames = [
   "D5",
   "Eb5",
   "E5",
-  // "F5",
-  // "Gb5",
-  // "G5",
-  // "Ab5",
-  // "A5",
-  // "Bb5",
-  // "B5"
 ];
 
 export const frequencies = {
@@ -135,3 +128,18 @@ export const frequencies = {
   "Bb5": new Octavian.Note("Bb5").frequency,
   "B5": new Octavian.Note("B5").frequency
 }
+
+//modular click function logic
+//if i am clicked and my octave isnt, click my octave
+//if i am clicked and my octave is clicked, unclick us both
+//if neither of us are clicked, click me only
+
+// handleClick(i) {
+//   const { notes } = this.props;
+//   if (i < 5 && notes[i] && !notes[i+12]) {
+//     return this.props.handleClick(i+12);
+//   } else if (notes[i] && notes[i+12]) {
+//     return this.props.handleClick(i, i+12);
+//   }
+//   return this.props.handleClick(i);
+// }
