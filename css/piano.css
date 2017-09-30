@@ -19,6 +19,12 @@
   position: relative;
 }
 
+/*.piano-key:hover {
+  -webkit-animation-name: purpleHover;
+  -webkit-animation-duration: 0.9s;
+  -webkit-animation-iteration-count: infinite;
+}*/
+
 .piano-key.D, .piano-key.E, .piano-key.G, .piano-key.A, .piano-key.B {
   margin-left: -15px;
 }

@@ -79,7 +79,9 @@ export const keyMap = [
   "l",
   ".",
   ";",
-  "/"
+  "/",
+  "ArrowLeft",
+  "ArrowRight"
 ];
 
 export const pianoKeyNames = [

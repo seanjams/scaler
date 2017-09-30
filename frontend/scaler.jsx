@@ -16,7 +16,7 @@ class Root extends React.Component {
       gains: [],
       vol: 0.3,
       mute: false,
-      modalOpen: false,
+      modalOpen: true,
       singleNoteMode: false,
       range: 3
     };
@@ -77,7 +77,7 @@ class Root extends React.Component {
           window.clearInterval(interval);
           this.setState({notes: Util.none});
         }
-      }, 200);
+      }, 210);
     }, 500);
   }
 
@@ -92,9 +92,24 @@ class Root extends React.Component {
     this.setState({notes, gains});
   }
 
+  incrementRange(a) {
+    let range = this.state.range + a;
+    if (range < -1) {
+      range = -1;
+    } else if (range > 7) {
+      range = 7;
+    }
+    this.setState({range});
+  }
+
   //turns notes on, only used by piano
   handleKeyDown(e) {
     let idx = Util.keyMap.indexOf(e.key);
+    if (idx > 16) {
+      const a = idx === 17 ? -1 : 1;
+      this.incrementRange(a);
+      return;
+    }
     if (idx >= 0) {
       this.changeSound(idx, this.state.vol);
     }
@@ -103,6 +118,7 @@ class Root extends React.Component {
   //turns notes off, only used py piano
   handleKeyUp(e) {
     let idx = Util.keyMap.indexOf(e.key);
+    if (idx > 15) return;
     if (idx >= 0) {
       this.changeSound(idx, 0);
     }
@@ -121,16 +137,6 @@ class Root extends React.Component {
       this.changeSound(i, 0);
       this.setState({notes: newNotes});
     }, 200);
-  }
-
-  incrementRange(a) {
-    let range = this.state.range + a;
-    if (range < -1) {
-      range = -1;
-    } else if (range > 7) {
-      range = 7;
-    }
-    this.setState({range});
   }
 
   toggleSingleNoteMode() {
@@ -152,7 +158,9 @@ class Root extends React.Component {
     if (this.state.modalOpen) {
       return (
         <div id="modal">
-          <h2>"This is my Modal Text"</h2>
+          <div id="modal-body">
+            <h2>"This is my Modal Text"</h2>
+          </div>
           <button onClick={this.toggleModal}>Close</button>
         </div>
       )
@@ -169,7 +177,7 @@ class Root extends React.Component {
             <i id="pattern-left" className="fa fa-chevron-left pattern-arrow" aria-hidden="true"></i>
           </button>
           <button id="mode-selector" onClick={this.toggleSingleNoteMode}>
-            <p>{ this.state.singleNoteMode ? "All Notes" : "Pattern Mode" }</p>
+            <p>{ this.state.singleNoteMode ? "Pattern" : "All" }</p>
           </button>
           <button onClick={() => this.incrementRange(1)} className={arrowClass} disabled={!singleNoteMode}>
             <i id="pattern-right" className="fa fa-chevron-right pattern-arrow" aria-hidden="true"></i>

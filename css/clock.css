@@ -16,3 +16,9 @@
   color: #555;
   box-shadow: 0 0 9px #333, inset 0 0 8px #666;
 }
+
+.note:hover {
+  -webkit-animation-name: purpleHover;
+  -webkit-animation-duration: 0.9s;
+  -webkit-animation-iteration-count: infinite;
+}

@@ -21,7 +21,7 @@ class Guitar extends React.Component {
 
     if (this.props.singleNoteMode) {
       for (let i = 0; i < 12; i++) {
-        if (n > 2) {
+        if (n > 1) {
           if (i < range || i > range + 4) { newNotes[i] = false }
         } else {
           if (i < range + 1 || i > range + 5) { newNotes[i] = false }

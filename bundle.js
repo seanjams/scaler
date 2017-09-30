@@ -4704,7 +4704,7 @@ var none = exports.none = [false, false, false, false, false, false, false, fals
 
 var noteNames = exports.noteNames = ["C", "D♭", "D", "E♭", "E", "F", "G♭", "G", "A♭", "A", "B♭", "B", "C", "D♭", "D", "E♭", "E", "F", "G♭", "G", "A♭", "A", "B♭", "B"];
 
-var keyMap = exports.keyMap = ["z", "s", "x", "d", "c", "v", "g", "b", "h", "n", "j", "m", ",", "l", ".", ";", "/"];
+var keyMap = exports.keyMap = ["z", "s", "x", "d", "c", "v", "g", "b", "h", "n", "j", "m", ",", "l", ".", ";", "/", "ArrowLeft", "ArrowRight"];
 
 var pianoKeyNames = exports.pianoKeyNames = ["C4", "Db4", "D4", "Eb4", "E4", "F4", "Gb4", "G4", "Ab4", "A4", "Bb4", "B4", "C5", "Db5", "D5", "Eb5", "E5"];
 
@@ -10325,7 +10325,7 @@ var Root = function (_React$Component) {
       gains: [],
       vol: 0.3,
       mute: false,
-      modalOpen: false,
+      modalOpen: true,
       singleNoteMode: false,
       range: 3
     };
@@ -10394,7 +10394,7 @@ var Root = function (_React$Component) {
             window.clearInterval(interval);
             _this2.setState({ notes: Util.none });
           }
-        }, 200);
+        }, 210);
       }, 500);
     }
 
@@ -10415,6 +10415,17 @@ var Root = function (_React$Component) {
       gains[i].gain.linearRampToValueAtTime(vol, context.currentTime + attack);
       this.setState({ notes: notes, gains: gains });
     }
+  }, {
+    key: 'incrementRange',
+    value: function incrementRange(a) {
+      var range = this.state.range + a;
+      if (range < -1) {
+        range = -1;
+      } else if (range > 7) {
+        range = 7;
+      }
+      this.setState({ range: range });
+    }
 
     //turns notes on, only used by piano
 
@@ -10422,6 +10433,11 @@ var Root = function (_React$Component) {
     key: 'handleKeyDown',
     value: function handleKeyDown(e) {
       var idx = Util.keyMap.indexOf(e.key);
+      if (idx > 16) {
+        var a = idx === 17 ? -1 : 1;
+        this.incrementRange(a);
+        return;
+      }
       if (idx >= 0) {
         this.changeSound(idx, this.state.vol);
       }
@@ -10433,6 +10449,7 @@ var Root = function (_React$Component) {
     key: 'handleKeyUp',
     value: function handleKeyUp(e) {
       var idx = Util.keyMap.indexOf(e.key);
+      if (idx > 15) return;
       if (idx >= 0) {
         this.changeSound(idx, 0);
       }
@@ -10465,17 +10482,6 @@ var Root = function (_React$Component) {
       }, 200);
     }
   }, {
-    key: 'incrementRange',
-    value: function incrementRange(a) {
-      var range = this.state.range + a;
-      if (range < -1) {
-        range = -1;
-      } else if (range > 7) {
-        range = 7;
-      }
-      this.setState({ range: range });
-    }
-  }, {
     key: 'toggleSingleNoteMode',
     value: function toggleSingleNoteMode() {
       var singleNoteMode = !this.state.singleNoteMode;
@@ -10501,9 +10507,13 @@ var Root = function (_React$Component) {
           'div',
           { id: 'modal' },
           _react2.default.createElement(
-            'h2',
-            null,
-            '"This is my Modal Text"'
+            'div',
+            { id: 'modal-body' },
+            _react2.default.createElement(
+              'h2',
+              null,
+              '"This is my Modal Text"'
+            )
           ),
           _react2.default.createElement(
             'button',
@@ -10540,7 +10550,7 @@ var Root = function (_React$Component) {
             _react2.default.createElement(
               'p',
               null,
-              this.state.singleNoteMode ? "All Notes" : "Pattern Mode"
+              this.state.singleNoteMode ? "Pattern" : "All"
             )
           ),
           _react2.default.createElement(
@@ -23945,7 +23955,7 @@ var Guitar = function (_React$Component) {
 
       if (this.props.singleNoteMode) {
         for (var _i = 0; _i < 12; _i++) {
-          if (n > 2) {
+          if (n > 1) {
             if (_i < range || _i > range + 4) {
               newNotes[_i] = false;
             }

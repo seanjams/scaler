@@ -42,3 +42,9 @@
   background: transparent;
   border-radius: 13px;
 }
+
+.fret:hover {
+  -webkit-animation-name: purpleHover;
+  -webkit-animation-duration: 0.9s;
+  -webkit-animation-iteration-count: infinite;
+}
