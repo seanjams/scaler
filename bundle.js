@@ -10508,17 +10508,42 @@ var Root = function (_React$Component) {
           { id: 'modal' },
           _react2.default.createElement(
             'div',
-            { id: 'modal-body' },
+            { id: 'modal-title' },
             _react2.default.createElement(
               'h2',
               null,
-              '"This is my Modal Text"'
+              'Welcome to Scalar'
+            ),
+            _react2.default.createElement(
+              'button',
+              { id: 'close-modal', onClick: this.toggleModal },
+              _react2.default.createElement('i', { id: 'pattern-left', className: 'fa fa-window-close', 'aria-hidden': 'true' })
             )
           ),
           _react2.default.createElement(
-            'button',
-            { onClick: this.toggleModal },
-            'Close'
+            'div',
+            { id: 'modal-body' },
+            'Visualize scales and chords guitar and piano at the same time! Click anywhere to highlight a note, and see it\'s locations on guitar and piano. Use the selector above the fretboard to access two modes:',
+            _react2.default.createElement(
+              'ul',
+              null,
+              _react2.default.createElement(
+                'li',
+                null,
+                'All - highlight notes all over the fretboard'
+              ),
+              _react2.default.createElement(
+                'li',
+                null,
+                'Pattern - ',
+                _react2.default.createElement(
+                  'span',
+                  { id: 'indent' },
+                  'highlight notes on a slice of the fretboard (adjust left and right with arrow keys)'
+                )
+              )
+            ),
+            'You can use the keyboard to play sound using the indicated piano keys. Rock on dude!'
           )
         );
       }

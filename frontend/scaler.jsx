@@ -158,10 +158,20 @@ class Root extends React.Component {
     if (this.state.modalOpen) {
       return (
         <div id="modal">
-          <div id="modal-body">
-            <h2>"This is my Modal Text"</h2>
+          <div id="modal-title">
+            <h2>Welcome to Scalar</h2>
+            <button id="close-modal" onClick={this.toggleModal}>
+              <i id="pattern-left" className="fa fa-window-close" aria-hidden="true"></i>
+            </button>
           </div>
-          <button onClick={this.toggleModal}>Close</button>
+          <div id="modal-body">
+            Visualize scales and chords guitar and piano at the same time! Click anywhere to highlight a note, and see it's locations on guitar and piano. Use the selector above the fretboard to access two modes:
+            <ul>
+              <li>All - highlight notes all over the fretboard</li>
+            <li>Pattern - <span id="indent">highlight notes on a slice of the fretboard (adjust left and right with arrow keys)</span></li>
+            </ul>
+            You can use the keyboard to play sound using the indicated piano keys. Rock on dude!
+          </div>
         </div>
       )
     }
