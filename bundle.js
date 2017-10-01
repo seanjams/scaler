@@ -10507,13 +10507,9 @@ var Root = function (_React$Component) {
           'div',
           { id: 'modal', onClick: this.toggleModal },
           _react2.default.createElement(
-            'div',
-            { id: 'modal-title' },
-            _react2.default.createElement(
-              'h2',
-              null,
-              'Welcome to Scalar'
-            )
+            'h2',
+            null,
+            'Welcome to Scalar'
           ),
           _react2.default.createElement(
             'div',
