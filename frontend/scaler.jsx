@@ -118,7 +118,7 @@ class Root extends React.Component {
   //turns notes off, only used py piano
   handleKeyUp(e) {
     let idx = Util.keyMap.indexOf(e.key);
-    if (idx > 15) return;
+    if (idx > 16) return;
     if (idx >= 0) {
       this.changeSound(idx, 0);
     }

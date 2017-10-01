@@ -10449,7 +10449,7 @@ var Root = function (_React$Component) {
     key: 'handleKeyUp',
     value: function handleKeyUp(e) {
       var idx = Util.keyMap.indexOf(e.key);
-      if (idx > 15) return;
+      if (idx > 16) return;
       if (idx >= 0) {
         this.changeSound(idx, 0);
       }
