@@ -16,9 +16,9 @@
 #modal {
   position: absolute;
   z-index: 2;
-  width: 60vw;
+  width: 40vw;
   max-height: 60vh;
-  margin-left: 20vw;
+  margin-left: 30vw;
   margin-top: 20vh;
   color: #eee;
   background: rgba(40,40,40,0.8);

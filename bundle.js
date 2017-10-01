@@ -10505,7 +10505,7 @@ var Root = function (_React$Component) {
       if (this.state.modalOpen) {
         return _react2.default.createElement(
           'div',
-          { id: 'modal' },
+          { id: 'modal', onClick: this.toggleModal },
           _react2.default.createElement(
             'div',
             { id: 'modal-title' },
@@ -10513,11 +10513,6 @@ var Root = function (_React$Component) {
               'h2',
               null,
               'Welcome to Scalar'
-            ),
-            _react2.default.createElement(
-              'button',
-              { id: 'close-modal', onClick: this.toggleModal },
-              _react2.default.createElement('i', { id: 'pattern-left', className: 'fa fa-window-close', 'aria-hidden': 'true' })
             )
           ),
           _react2.default.createElement(
