@@ -165,7 +165,7 @@ class Root extends React.Component {
             </button>
           </div>
           <div id="modal-body">
-            Visualize scales and chords guitar and piano at the same time! Click anywhere to highlight a note, and see it's locations on guitar and piano. Use the selector above the fretboard to access two modes:
+            Visualize scales and chords on guitar and piano at the same time! Click anywhere to highlight a note, and see it's locations on guitar and piano. Use the selector above the fretboard to access two modes:
             <ul>
               <li>All - highlight notes all over the fretboard</li>
             <li>Pattern - <span id="indent">highlight notes on a slice of the fretboard (adjust left and right with arrow keys)</span></li>
