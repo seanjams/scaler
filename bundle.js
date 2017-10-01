@@ -10523,7 +10523,7 @@ var Root = function (_React$Component) {
           _react2.default.createElement(
             'div',
             { id: 'modal-body' },
-            'Visualize scales and chords on guitar and piano at the same time! Click anywhere to highlight a note, and see it\'s locations on each instrument. Use the keyboard to play sound through the piano, the selector above the fretboard to access two modes:',
+            'Visualize scales and chords on guitar and piano at the same time! Click anywhere to highlight a note, and see it\'s locations on each instrument. Use the keyboard to play sound through the piano, and the selector above the fretboard to access two modes:',
             _react2.default.createElement(
               'ul',
               null,
