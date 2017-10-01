@@ -1,5 +1,7 @@
 # Scaler
 
+For best compatibility, use in Chrome or Firefox:
+
 https://seanjams.github.io/Scalar/
 
 Scaler is a web application built in Javascript/React where guitarists and pianists can both hear and visualize musical notes, chords and scales on each instrument simultaneously.
@@ -31,13 +33,14 @@ Laying button elements across a fretboard ended up being no simple task. Of cour
 ```jsx
 return newNotes.map((note, i) => (
     <button key={`fret-${i}`}
-            className={`fret ${note ? "in-key" : ""} ${Util.noteNames[i + 1 + noteShift]}`}
+            className={
+              `fret ${note ? "in-key" : ""} ${Util.noteNames[i + 1 + noteShift]}`
+            }
             style={{
               left: -31 * i * i / 20 + 645 * i / 12,
               top: i * (n - 2.5) / 4.20
             }}
-
-            onClick={() => this.handleClick((i + 1 + noteShift) % 12)}>
+            onClick={() => this.props.handleClick((i + 1 + noteShift) % 12)}>
     </button>
 ));
 ```
@@ -46,38 +49,52 @@ In order to make sound, we create Web Audio API oscillators with the frequencies
 
 ```jsx
 componentDidMount() {
+  //intialize state and oscillator nodes for sound
   this.letThereBeSound();
   let i = 0;
-  const interval = setInterval(() => {
-    i > 0 ? this.changeSound(i-1, 0): null;
-    this.changeSound(i, this.state.vol);
-    if (++i === 12) {
-      setTimeout(() => this.changeSound(i-1, 0), 200);
-      window.clearInterval(interval);
-    }
-  }, 180);
+
+  setTimeout(() => {
+    let i = 0;
+    const interval = setInterval(() => {
+      //sound current note
+      this.changeSound(i, this.state.vol, 0.13)
+      //shut off current note after duration of note and increment counter
+      setTimeout(() => {
+        this.changeSound(i, 0, 0.07);
+        ++i;
+      }, 130);
+
+      //clear interval if last note
+      if (i === 11) {
+        window.clearInterval(interval);
+        this.setState({notes: Util.none});
+      }
+    }, 210);
+  }, 500);
 }
 
-changeSound(i, vol) {
+changeSound(i, volume, attack = 0.1) {
   const { notes, gains } = this.state;
+  const vol = this.state.mute ? 0 : volume;
   const { context } = gains[i];
-  notes[i] = !!vol;
+  notes[i] = !!volume;
   gains[i].gain
-    .linearRampToValueAtTime(vol, context.currentTime + 0.2);
+    .linearRampToValueAtTime(vol, context.currentTime + attack);
   this.setState({notes, gains});
 }
 
 handleKeyDown(e) {
-  e.preventDefault();
   let idx = Util.keyMap.indexOf(e.key);
-  if (idx || idx === 0) {
+  if (idx > 16) {
+    const a = idx === 17 ? -1 : 1;
+    this.incrementRange(a);
+    return;
+  }
+  if (idx >= 0) {
     this.changeSound(idx, this.state.vol);
   }
 }
 ```
-
-
-
 
 ## In the making...
 

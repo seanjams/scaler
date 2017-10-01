@@ -124,7 +124,7 @@
 }
 
 .pattern-shifter-container {
-  z-index: 1;
+  z-index: 2;
   width: 1000px;
   height: 0px;
   font-family: 'GreatVibes';

@@ -23999,7 +23999,6 @@ var Guitar = function (_React$Component) {
             left: -31 * i * i / 20 + 645 * i / 12,
             top: i * (n - 2.5) / 4.20
           },
-
           onClick: function onClick() {
             return _this2.props.handleClick((i + 1 + noteShift) % 12);
           } });
