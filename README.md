@@ -1,4 +1,4 @@
-# Scaler
+# Scalar
 
 For best compatibility, use in Chrome or Firefox:
 
