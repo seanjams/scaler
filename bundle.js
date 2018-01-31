@@ -4692,7 +4692,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.frequencies = exports.pianoKeyNames = exports.keyMap = exports.noteNames = exports.none = exports.major = undefined;
 
-var _octavian = __webpack_require__(189);
+var _octavian = __webpack_require__(190);
 
 var _octavian2 = _interopRequireDefault(_octavian);
 
@@ -10061,25 +10061,25 @@ var _classCallCheck = function (instance, Constructor) { if (!(instance instance
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-var _parseNote = __webpack_require__(190);
+var _parseNote = __webpack_require__(191);
 
 var _parseNote2 = _interopRequireDefault(_parseNote);
 
-var _getAlternateName = __webpack_require__(192);
+var _getAlternateName = __webpack_require__(193);
 
 var _getAlternateName2 = _interopRequireDefault(_getAlternateName);
 
-var _getNoteFromPianoKey = __webpack_require__(193);
+var _getNoteFromPianoKey = __webpack_require__(194);
 
 var _getNoteFromPianoKey2 = _interopRequireDefault(_getNoteFromPianoKey);
 
 var _pianoKeys$frequencies = __webpack_require__(51);
 
-var _validateNote = __webpack_require__(194);
+var _validateNote = __webpack_require__(195);
 
 var _validateNote2 = _interopRequireDefault(_validateNote);
 
-var _intervals = __webpack_require__(195);
+var _intervals = __webpack_require__(196);
 
 var _intervals2 = _interopRequireDefault(_intervals);
 
@@ -10209,7 +10209,7 @@ var _Note = __webpack_require__(84);
 
 var _Note2 = _interopRequireDefault(_Note);
 
-var _addAdditionalNotes = __webpack_require__(196);
+var _addAdditionalNotes = __webpack_require__(197);
 
 var _addAdditionalNotes2 = _interopRequireDefault(_addAdditionalNotes);
 
@@ -10281,15 +10281,15 @@ var _reactDom = __webpack_require__(102);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _clock = __webpack_require__(188);
+var _clock = __webpack_require__(189);
 
 var _clock2 = _interopRequireDefault(_clock);
 
-var _piano = __webpack_require__(198);
+var _piano = __webpack_require__(199);
 
 var _piano2 = _interopRequireDefault(_piano);
 
-var _guitar = __webpack_require__(199);
+var _guitar = __webpack_require__(200);
 
 var _guitar2 = _interopRequireDefault(_guitar);
 
@@ -23295,7 +23295,8 @@ module.exports = ReactDOMInvalidARIAHook;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 188 */
+/* 188 */,
+/* 189 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23386,7 +23387,7 @@ var Clock = function (_React$Component) {
 exports.default = Clock;
 
 /***/ }),
-/* 189 */
+/* 190 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23413,7 +23414,7 @@ exports['default'] = {
 module.exports = exports['default'];
 
 /***/ }),
-/* 190 */
+/* 191 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23425,7 +23426,7 @@ Object.defineProperty(exports, '__esModule', {
 
 var _interopRequireDefault = function (obj) { return obj && obj.__esModule ? obj : { 'default': obj }; };
 
-var _normalizeNote2 = __webpack_require__(191);
+var _normalizeNote2 = __webpack_require__(192);
 
 var _normalizeNote3 = _interopRequireDefault(_normalizeNote2);
 
@@ -23455,7 +23456,7 @@ exports['default'] = function (note) {
 module.exports = exports['default'];
 
 /***/ }),
-/* 191 */
+/* 192 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23503,7 +23504,7 @@ function validateModifier(modifier) {
 module.exports = exports['default'];
 
 /***/ }),
-/* 192 */
+/* 193 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23545,7 +23546,7 @@ exports['default'] = function (signature) {
 module.exports = exports['default'];
 
 /***/ }),
-/* 193 */
+/* 194 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23573,7 +23574,7 @@ function swapKeysAndValues(object) {
 module.exports = exports['default'];
 
 /***/ }),
-/* 194 */
+/* 195 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23597,7 +23598,7 @@ function validateNote(signature) {
 module.exports = exports['default'];
 
 /***/ }),
-/* 195 */
+/* 196 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23645,7 +23646,7 @@ exports["default"] = Object.freeze(intervals);
 module.exports = exports["default"];
 
 /***/ }),
-/* 196 */
+/* 197 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23657,7 +23658,7 @@ Object.defineProperty(exports, '__esModule', {
 
 var _interopRequireDefault = function (obj) { return obj && obj.__esModule ? obj : { 'default': obj }; };
 
-var _modes = __webpack_require__(197);
+var _modes = __webpack_require__(198);
 
 var _modes2 = _interopRequireDefault(_modes);
 
@@ -23679,7 +23680,7 @@ exports['default'] = function () {
 module.exports = exports['default'];
 
 /***/ }),
-/* 197 */
+/* 198 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23828,7 +23829,7 @@ exports['default'] = Object.freeze(modes);
 module.exports = exports['default'];
 
 /***/ }),
-/* 198 */
+/* 199 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23909,7 +23910,7 @@ var Piano = function (_React$Component) {
 exports.default = Piano;
 
 /***/ }),
-/* 199 */
+/* 200 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
