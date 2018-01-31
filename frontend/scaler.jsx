@@ -118,7 +118,7 @@ class Root extends React.Component {
   //turns notes off, only used py piano
   handleKeyUp(e) {
     let idx = Util.keyMap.indexOf(e.key);
-    if (idx > 16) return;
+    if (idx > 15) return;
     if (idx >= 0) {
       this.changeSound(idx, 0);
     }
@@ -157,15 +157,20 @@ class Root extends React.Component {
   renderInstructions() {
     if (this.state.modalOpen) {
       return (
-        <div id="modal" onClick={this.toggleModal}>
-          <h2>Welcome to Scalar</h2>
+        <div id="modal">
+          <div id="modal-title">
+            <h2>Welcome to Scalar</h2>
+            <button id="close-modal" onClick={this.toggleModal}>
+              <i id="pattern-left" className="fa fa-window-close" aria-hidden="true"></i>
+            </button>
+          </div>
           <div id="modal-body">
-            Visualize scales and chords on guitar and piano at the same time! Click anywhere to highlight a note, and see it's locations on each instrument. Use the keyboard to play sound through the piano, and the selector above the fretboard to access two modes:
+            Visualize scales and chords guitar and piano at the same time! Click anywhere to highlight a note, and see it's locations on guitar and piano. Use the selector above the fretboard to access two modes:
             <ul>
               <li>All - highlight notes all over the fretboard</li>
-              <li>Pattern - <span id="indent">highlight notes on a slice of the fretboard (adjust left and right with arrow keys)</span></li>
+            <li>Pattern - <span id="indent">highlight notes on a slice of the fretboard (adjust left and right with arrow keys)</span></li>
             </ul>
-            Rock on dude!
+            You can use the keyboard to play sound using the indicated piano keys. Rock on dude!
           </div>
         </div>
       )

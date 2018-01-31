@@ -16,24 +16,43 @@
 #modal {
   position: absolute;
   z-index: 2;
-  width: 40vw;
-  min-height: 60vh;
-  margin-left: 30vw;
+  width: 60vw;
+  max-height: 60vh;
+  margin-left: 20vw;
   margin-top: 20vh;
   color: #eee;
   background: rgba(40,40,40,0.8);
   border-radius: 5px;
+  display: flex;
+  flex-direction: column;
   font-size: 20px;
+  align-items: center;
+  justify-content: center;
 }
 
-#modal h2 {
-  margin: 1em;
-  text-align: center;
+#modal-title {
+  margin: 2em;
+  width: 100%;
+  flex: 1;
+  display: flex;
+}
+
+#modal-title h2 {
+  flex: 9;
   font-size: 40px;
 }
 
+#modal-title button {
+  flex: 1;
+  position: relative;
+  top: -14px;
+  font-size: 30px;
+}
+
 #modal-body {
-  margin: 0 2em 2em 2em;
+  margin: 0 2em;
+  margin-bottom: 2em;
+  flex: 6;
   font-family: 'Harmattan', sans-serif;
   text-align: left;
 }
@@ -105,7 +124,7 @@
 }
 
 .pattern-shifter-container {
-  z-index: 2;
+  z-index: 1;
   width: 1000px;
   height: 0px;
   font-family: 'GreatVibes';

@@ -4692,7 +4692,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.frequencies = exports.pianoKeyNames = exports.keyMap = exports.noteNames = exports.none = exports.major = undefined;
 
-var _octavian = __webpack_require__(190);
+var _octavian = __webpack_require__(189);
 
 var _octavian2 = _interopRequireDefault(_octavian);
 
@@ -10061,25 +10061,25 @@ var _classCallCheck = function (instance, Constructor) { if (!(instance instance
 
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-var _parseNote = __webpack_require__(191);
+var _parseNote = __webpack_require__(190);
 
 var _parseNote2 = _interopRequireDefault(_parseNote);
 
-var _getAlternateName = __webpack_require__(193);
+var _getAlternateName = __webpack_require__(192);
 
 var _getAlternateName2 = _interopRequireDefault(_getAlternateName);
 
-var _getNoteFromPianoKey = __webpack_require__(194);
+var _getNoteFromPianoKey = __webpack_require__(193);
 
 var _getNoteFromPianoKey2 = _interopRequireDefault(_getNoteFromPianoKey);
 
 var _pianoKeys$frequencies = __webpack_require__(51);
 
-var _validateNote = __webpack_require__(195);
+var _validateNote = __webpack_require__(194);
 
 var _validateNote2 = _interopRequireDefault(_validateNote);
 
-var _intervals = __webpack_require__(196);
+var _intervals = __webpack_require__(195);
 
 var _intervals2 = _interopRequireDefault(_intervals);
 
@@ -10209,7 +10209,7 @@ var _Note = __webpack_require__(84);
 
 var _Note2 = _interopRequireDefault(_Note);
 
-var _addAdditionalNotes = __webpack_require__(197);
+var _addAdditionalNotes = __webpack_require__(196);
 
 var _addAdditionalNotes2 = _interopRequireDefault(_addAdditionalNotes);
 
@@ -10281,15 +10281,15 @@ var _reactDom = __webpack_require__(102);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _clock = __webpack_require__(189);
+var _clock = __webpack_require__(188);
 
 var _clock2 = _interopRequireDefault(_clock);
 
-var _piano = __webpack_require__(199);
+var _piano = __webpack_require__(198);
 
 var _piano2 = _interopRequireDefault(_piano);
 
-var _guitar = __webpack_require__(200);
+var _guitar = __webpack_require__(199);
 
 var _guitar2 = _interopRequireDefault(_guitar);
 
@@ -10449,7 +10449,7 @@ var Root = function (_React$Component) {
     key: 'handleKeyUp',
     value: function handleKeyUp(e) {
       var idx = Util.keyMap.indexOf(e.key);
-      if (idx > 16) return;
+      if (idx > 15) return;
       if (idx >= 0) {
         this.changeSound(idx, 0);
       }
@@ -10505,16 +10505,25 @@ var Root = function (_React$Component) {
       if (this.state.modalOpen) {
         return _react2.default.createElement(
           'div',
-          { id: 'modal', onClick: this.toggleModal },
+          { id: 'modal' },
           _react2.default.createElement(
-            'h2',
-            null,
-            'Welcome to Scalar'
+            'div',
+            { id: 'modal-title' },
+            _react2.default.createElement(
+              'h2',
+              null,
+              'Welcome to Scalar'
+            ),
+            _react2.default.createElement(
+              'button',
+              { id: 'close-modal', onClick: this.toggleModal },
+              _react2.default.createElement('i', { id: 'pattern-left', className: 'fa fa-window-close', 'aria-hidden': 'true' })
+            )
           ),
           _react2.default.createElement(
             'div',
             { id: 'modal-body' },
-            'Visualize scales and chords on guitar and piano at the same time! Click anywhere to highlight a note, and see it\'s locations on each instrument. Use the keyboard to play sound through the piano, and the selector above the fretboard to access two modes:',
+            'Visualize scales and chords guitar and piano at the same time! Click anywhere to highlight a note, and see it\'s locations on guitar and piano. Use the selector above the fretboard to access two modes:',
             _react2.default.createElement(
               'ul',
               null,
@@ -10534,7 +10543,7 @@ var Root = function (_React$Component) {
                 )
               )
             ),
-            'Rock on dude!'
+            'You can use the keyboard to play sound using the indicated piano keys. Rock on dude!'
           )
         );
       }
@@ -23295,8 +23304,7 @@ module.exports = ReactDOMInvalidARIAHook;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 188 */,
-/* 189 */
+/* 188 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23387,7 +23395,7 @@ var Clock = function (_React$Component) {
 exports.default = Clock;
 
 /***/ }),
-/* 190 */
+/* 189 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23414,7 +23422,7 @@ exports['default'] = {
 module.exports = exports['default'];
 
 /***/ }),
-/* 191 */
+/* 190 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23426,7 +23434,7 @@ Object.defineProperty(exports, '__esModule', {
 
 var _interopRequireDefault = function (obj) { return obj && obj.__esModule ? obj : { 'default': obj }; };
 
-var _normalizeNote2 = __webpack_require__(192);
+var _normalizeNote2 = __webpack_require__(191);
 
 var _normalizeNote3 = _interopRequireDefault(_normalizeNote2);
 
@@ -23456,7 +23464,7 @@ exports['default'] = function (note) {
 module.exports = exports['default'];
 
 /***/ }),
-/* 192 */
+/* 191 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23504,7 +23512,7 @@ function validateModifier(modifier) {
 module.exports = exports['default'];
 
 /***/ }),
-/* 193 */
+/* 192 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23546,7 +23554,7 @@ exports['default'] = function (signature) {
 module.exports = exports['default'];
 
 /***/ }),
-/* 194 */
+/* 193 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23574,7 +23582,7 @@ function swapKeysAndValues(object) {
 module.exports = exports['default'];
 
 /***/ }),
-/* 195 */
+/* 194 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23598,7 +23606,7 @@ function validateNote(signature) {
 module.exports = exports['default'];
 
 /***/ }),
-/* 196 */
+/* 195 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23646,7 +23654,7 @@ exports["default"] = Object.freeze(intervals);
 module.exports = exports["default"];
 
 /***/ }),
-/* 197 */
+/* 196 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23658,7 +23666,7 @@ Object.defineProperty(exports, '__esModule', {
 
 var _interopRequireDefault = function (obj) { return obj && obj.__esModule ? obj : { 'default': obj }; };
 
-var _modes = __webpack_require__(198);
+var _modes = __webpack_require__(197);
 
 var _modes2 = _interopRequireDefault(_modes);
 
@@ -23680,7 +23688,7 @@ exports['default'] = function () {
 module.exports = exports['default'];
 
 /***/ }),
-/* 198 */
+/* 197 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23829,7 +23837,7 @@ exports['default'] = Object.freeze(modes);
 module.exports = exports['default'];
 
 /***/ }),
-/* 199 */
+/* 198 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23910,7 +23918,7 @@ var Piano = function (_React$Component) {
 exports.default = Piano;
 
 /***/ }),
-/* 200 */
+/* 199 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23991,6 +23999,7 @@ var Guitar = function (_React$Component) {
             left: -31 * i * i / 20 + 645 * i / 12,
             top: i * (n - 2.5) / 4.20
           },
+
           onClick: function onClick() {
             return _this2.props.handleClick((i + 1 + noteShift) % 12);
           } });
