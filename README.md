@@ -1,22 +1,24 @@
 # Scaler
 
-https://seanjams.github.io/Scalar/
+https://seanjams.github.io/scaler/
 
 Scaler is a web application built in Javascript/React where guitarists and pianists can both hear and visualize musical notes, chords and scales on each instrument simultaneously.
 
 ## Features
 
-- Interactive piano, guitar neck, and note selector that allows users to click on notes they want to see
-- Note hues are assigned according to the circle of fifths, which makes "close" notes be "close" in color
-- Keyboard sounds built with Web Audio API oscillators
+* Interactive piano, guitar neck, and note selector that allows users to click on notes they want to see
+* Note hues are assigned according to the circle of fifths, which makes "close" notes be "close" in color
+* Keyboard sounds built with Web Audio API oscillators
 
 ## Programming Languages
-- JavaScript (es6)
+
+* JavaScript (es6)
 
 ### Technologies
-- React.js
-- Web Audio API
-- Octavian.js
+
+* React.js
+* Web Audio API
+* Octavian.js
 
 ### Complete Interactivity
 
@@ -30,15 +32,17 @@ Laying button elements across a fretboard ended up being no simple task. Of cour
 
 ```jsx
 return newNotes.map((note, i) => (
-    <button key={`fret-${i}`}
-            className={`fret ${note ? "in-key" : ""} ${Util.noteNames[i + 1 + noteShift]}`}
-            style={{
-              left: -31 * i * i / 20 + 645 * i / 12,
-              top: i * (n - 2.5) / 4.20
-            }}
-
-            onClick={() => this.handleClick((i + 1 + noteShift) % 12)}>
-    </button>
+	<button
+		key={`fret-${i}`}
+		className={`fret ${note ? "in-key" : ""} ${
+			Util.noteNames[i + 1 + noteShift]
+		}`}
+		style={{
+			left: -31 * i * i / 20 + 645 * i / 12,
+			top: i * (n - 2.5) / 4.2,
+		}}
+		onClick={() => this.handleClick((i + 1 + noteShift) % 12)}
+	/>
 ));
 ```
 
@@ -75,9 +79,6 @@ handleKeyDown(e) {
   }
 }
 ```
-
-
-
 
 ## In the making...
 

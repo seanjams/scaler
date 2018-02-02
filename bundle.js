@@ -4690,7 +4690,7 @@ module.exports = ReactBrowserEventEmitter;
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-exports.synthOpts = exports.frequencies = exports.pianoKeyNames = exports.keyMap = exports.noteNames = exports.none = exports.major = undefined;
+exports.jingleTimes = exports.jingleNotes = exports.synthOpts = exports.keyMap = exports.noteNames = exports.none = exports.major = undefined;
 
 var _octavian = __webpack_require__(190);
 
@@ -4700,42 +4700,90 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var major = exports.major = [true, false, true, false, true, true, false, true, false, true, false, true];
 
-var none = exports.none = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false];
+var none = exports.none = Array(17).fill(false);
 
 var noteNames = exports.noteNames = ["C", "D♭", "D", "E♭", "E", "F", "G♭", "G", "A♭", "A", "B♭", "B", "C", "D♭", "D", "E♭", "E", "F", "G♭", "G", "A♭", "A", "B♭", "B"];
 
 var keyMap = exports.keyMap = ["a", "w", "s", "e", "d", "f", "t", "g", "y", "h", "u", "j", "k", "o", "l", "p", ";", "ArrowLeft", "ArrowRight"];
 
-var pianoKeyNames = exports.pianoKeyNames = ["C4", "Db4", "D4", "Eb4", "E4", "F4", "Gb4", "G4", "Ab4", "A4", "Bb4", "B4", "C5", "Db5", "D5", "Eb5", "E5"];
+// export const pianoKeyNames = [
+// 	"C4",
+// 	"Db4",
+// 	"D4",
+// 	"Eb4",
+// 	"E4",
+// 	"F4",
+// 	"Gb4",
+// 	"G4",
+// 	"Ab4",
+// 	"A4",
+// 	"Bb4",
+// 	"B4",
+// 	"C5",
+// 	"Db5",
+// 	"D5",
+// 	"Eb5",
+// 	"E5",
+// ];
 
-var frequencies = exports.frequencies = {
-	C4: new _octavian2.default.Note("C4").frequency,
-	Db4: new _octavian2.default.Note("Db4").frequency,
-	D4: new _octavian2.default.Note("D4").frequency,
-	Eb4: new _octavian2.default.Note("Eb4").frequency,
-	E4: new _octavian2.default.Note("E4").frequency,
-	F4: new _octavian2.default.Note("F4").frequency,
-	Gb4: new _octavian2.default.Note("Gb4").frequency,
-	G4: new _octavian2.default.Note("G4").frequency,
-	Ab4: new _octavian2.default.Note("Ab4").frequency,
-	A4: new _octavian2.default.Note("A4").frequency,
-	Bb4: new _octavian2.default.Note("Bb4").frequency,
-	B4: new _octavian2.default.Note("B4").frequency,
-	C5: new _octavian2.default.Note("C5").frequency,
-	Db5: new _octavian2.default.Note("Db5").frequency,
-	D5: new _octavian2.default.Note("D5").frequency,
-	Eb5: new _octavian2.default.Note("Eb5").frequency,
-	E5: new _octavian2.default.Note("E5").frequency,
-	F5: new _octavian2.default.Note("F5").frequency,
-	Gb5: new _octavian2.default.Note("Gb5").frequency,
-	G5: new _octavian2.default.Note("G5").frequency,
-	Ab5: new _octavian2.default.Note("Ab5").frequency,
-	A5: new _octavian2.default.Note("A5").frequency,
-	Bb5: new _octavian2.default.Note("Bb5").frequency,
-	B5: new _octavian2.default.Note("B5").frequency
+// export const frequencies = {
+// 	C4: new Octavian.Note("C4").frequency,
+// 	Db4: new Octavian.Note("Db4").frequency,
+// 	D4: new Octavian.Note("D4").frequency,
+// 	Eb4: new Octavian.Note("Eb4").frequency,
+// 	E4: new Octavian.Note("E4").frequency,
+// 	F4: new Octavian.Note("F4").frequency,
+// 	Gb4: new Octavian.Note("Gb4").frequency,
+// 	G4: new Octavian.Note("G4").frequency,
+// 	Ab4: new Octavian.Note("Ab4").frequency,
+// 	A4: new Octavian.Note("A4").frequency,
+// 	Bb4: new Octavian.Note("Bb4").frequency,
+// 	B4: new Octavian.Note("B4").frequency,
+// 	C5: new Octavian.Note("C5").frequency,
+// 	Db5: new Octavian.Note("Db5").frequency,
+// 	D5: new Octavian.Note("D5").frequency,
+// 	Eb5: new Octavian.Note("Eb5").frequency,
+// 	E5: new Octavian.Note("E5").frequency,
+// 	F5: new Octavian.Note("F5").frequency,
+// 	Gb5: new Octavian.Note("Gb5").frequency,
+// 	G5: new Octavian.Note("G5").frequency,
+// 	Ab5: new Octavian.Note("Ab5").frequency,
+// 	A5: new Octavian.Note("A5").frequency,
+// 	Bb5: new Octavian.Note("Bb5").frequency,
+// 	B5: new Octavian.Note("B5").frequency,
+// };
+
+var synthOpts = exports.synthOpts = {
+	oscillator: {
+		type: "amtriangle"
+	},
+	// filter: {
+	// 	Q: 6,
+	// 	type: "lowpass",
+	// 	rolloff: -24,
+	// },
+	envelope: {
+		attack: 0.05,
+		decay: 1,
+		sustain: 0.9,
+		release: 1
+	}
+	// filterEnvelope: {
+	// 	attack: 0.06,
+	// 	decay: 0.2,
+	// 	sustain: 0.5,
+	// 	release: 2,
+	// 	baseFrequency: 200,
+	// 	octaves: 7,
+	// 	exponent: 2,
+	// },
 };
 
-var synthOpts = exports.synthOpts = {};
+var jingleNotes = exports.jingleNotes = Array(12).fill(0).map(function (_, i) {
+	return i;
+});
+
+var jingleTimes = exports.jingleTimes = Array(12).fill("8n");
 
 //modular click function logic
 //if i am clicked and my octave isnt, click my octave
@@ -10346,32 +10394,44 @@ var Root = function (_React$Component) {
 		return _this;
 	}
 
-	// componentDidMount() {
-	// 	//intialize state and oscillator nodes for sound
-	// 	this.letThereBeSound();
-	// 	let i = 0;
-
-	// 	setTimeout(() => {
-	// 		let i = 0;
-	// 		const interval = setInterval(() => {
-	// 			//sound current note
-	// 			this.changeSound(i, this.state.vol, 0.13);
-	// 			//shut off current note after duration of note and increment counter
-	// 			setTimeout(() => {
-	// 				this.changeSound(i, 0, 0.07);
-	// 				++i;
-	// 			}, 130);
-
-	// 			//clear interval if last note
-	// 			if (i === 11) {
-	// 				window.clearInterval(interval);
-	// 				this.setState({ notes: Util.none });
-	// 			}
-	// 		}, 210);
-	// 	}, 500);
-	// }
-
 	_createClass(Root, [{
+		key: "componentDidMount",
+		value: function componentDidMount() {
+			var _this2 = this;
+
+			var _state = this.state,
+			    vol = _state.vol,
+			    synth = _state.synth;
+
+			var notes = [].concat(_toConsumableArray(this.state.notes));
+			var timePattern = Util.jingleTimes;
+			var notePattern = Util.jingleNotes;
+
+			if (notePattern.length > timePattern.length) throw new Error();
+
+			var scale = notePattern.map(function (note, i) {
+				return { note: note, time: timePattern[i] };
+			});
+
+			var interval = setTimeout(function () {
+				var pattern = new _tone2.default.Sequence(function (start, scale) {
+					notes[scale.note] = true;
+					_this2.setState({ notes: notes });
+					notes[scale.note] = false;
+					var freq = _tone2.default.Frequency().midiToFrequency(60 + scale.note);
+					synth.triggerAttackRelease(freq, scale.time, start);
+				}, scale, "8n").start();
+				pattern.loop = 0;
+
+				var event = new _tone2.default.Event(function () {
+					_this2.setState({ notes: notes });
+				}, undefined);
+				event.start("1:2");
+
+				_tone2.default.Transport.start();
+			}, 500);
+		}
+	}, {
 		key: "incrementRange",
 		value: function incrementRange(a) {
 			var range = this.state.range + a;
@@ -10385,10 +10445,10 @@ var Root = function (_React$Component) {
 	}, {
 		key: "handleKeyDown",
 		value: function handleKeyDown(e) {
-			var _state = this.state,
-			    synth = _state.synth,
-			    vol = _state.vol,
-			    notes = _state.notes;
+			var _state2 = this.state,
+			    synth = _state2.synth,
+			    vol = _state2.vol,
+			    notes = _state2.notes;
 
 			var idx = Util.keyMap.indexOf(e.key);
 			if (idx > 16) {
@@ -10408,9 +10468,9 @@ var Root = function (_React$Component) {
 	}, {
 		key: "handleKeyUp",
 		value: function handleKeyUp(e) {
-			var _state2 = this.state,
-			    synth = _state2.synth,
-			    notes = _state2.notes;
+			var _state3 = this.state,
+			    synth = _state3.synth,
+			    notes = _state3.notes;
 
 			var idx = Util.keyMap.indexOf(e.key);
 			if (idx > 16) return;
@@ -10428,9 +10488,9 @@ var Root = function (_React$Component) {
 	}, {
 		key: "handleClick",
 		value: function handleClick(i) {
-			var _state3 = this.state,
-			    synth = _state3.synth,
-			    vol = _state3.vol;
+			var _state4 = this.state,
+			    synth = _state4.synth,
+			    vol = _state4.vol;
 
 			var newNotes = [].concat(_toConsumableArray(this.state.notes));
 			newNotes[i] = !newNotes[i];
@@ -10469,7 +10529,7 @@ var Root = function (_React$Component) {
 						_react2.default.createElement(
 							"h2",
 							null,
-							"Welcome to Scalar"
+							"Welcome to Scaler"
 						),
 						_react2.default.createElement(
 							"button",
@@ -10513,7 +10573,7 @@ var Root = function (_React$Component) {
 	}, {
 		key: "renderPatternShifter",
 		value: function renderPatternShifter() {
-			var _this2 = this;
+			var _this3 = this;
 
 			var singleNoteMode = this.state.singleNoteMode;
 
@@ -10528,7 +10588,7 @@ var Root = function (_React$Component) {
 						"button",
 						{
 							onClick: function onClick() {
-								return _this2.incrementRange(-1);
+								return _this3.incrementRange(-1);
 							},
 							className: arrowClass,
 							disabled: !singleNoteMode
@@ -10552,7 +10612,7 @@ var Root = function (_React$Component) {
 						"button",
 						{
 							onClick: function onClick() {
-								return _this2.incrementRange(1);
+								return _this3.incrementRange(1);
 							},
 							className: arrowClass,
 							disabled: !singleNoteMode
@@ -10582,7 +10642,7 @@ var Root = function (_React$Component) {
 						_react2.default.createElement(
 							"h1",
 							null,
-							"Scalar"
+							"Scaler"
 						),
 						_react2.default.createElement(
 							"p",
@@ -10609,7 +10669,7 @@ var Root = function (_React$Component) {
 						),
 						_react2.default.createElement(
 							"a",
-							{ href: "https://github.com/seanjams/Scalar" },
+							{ href: "https://github.com/seanjams/scaler" },
 							_react2.default.createElement("i", {
 								id: "github-icon",
 								className: "fa fa-github-square",

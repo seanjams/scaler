@@ -33,30 +33,40 @@ class Root extends React.Component {
 		this.toggleSingleNoteMode = this.toggleSingleNoteMode.bind(this);
 	}
 
-	// componentDidMount() {
-	// 	//intialize state and oscillator nodes for sound
-	// 	this.letThereBeSound();
-	// 	let i = 0;
+	componentDidMount() {
+		const { vol, synth } = this.state;
+		const notes = [...this.state.notes];
+		const timePattern = Util.jingleTimes;
+		const notePattern = Util.jingleNotes;
 
-	// 	setTimeout(() => {
-	// 		let i = 0;
-	// 		const interval = setInterval(() => {
-	// 			//sound current note
-	// 			this.changeSound(i, this.state.vol, 0.13);
-	// 			//shut off current note after duration of note and increment counter
-	// 			setTimeout(() => {
-	// 				this.changeSound(i, 0, 0.07);
-	// 				++i;
-	// 			}, 130);
+		if (notePattern.length > timePattern.length) throw new Error();
 
-	// 			//clear interval if last note
-	// 			if (i === 11) {
-	// 				window.clearInterval(interval);
-	// 				this.setState({ notes: Util.none });
-	// 			}
-	// 		}, 210);
-	// 	}, 500);
-	// }
+		const scale = notePattern.map((note, i) => {
+			return { note, time: timePattern[i] };
+		});
+
+		const interval = setTimeout(() => {
+			const pattern = new Tone.Sequence(
+				(start, scale) => {
+					notes[scale.note] = true;
+					this.setState({ notes });
+					notes[scale.note] = false;
+					let freq = Tone.Frequency().midiToFrequency(60 + scale.note);
+					synth.triggerAttackRelease(freq, scale.time, start);
+				},
+				scale,
+				"8n"
+			).start();
+			pattern.loop = 0;
+
+			const event = new Tone.Event(() => {
+				this.setState({ notes });
+			}, undefined);
+			event.start("1:2");
+
+			Tone.Transport.start();
+		}, 500);
+	}
 
 	incrementRange(a) {
 		let range = this.state.range + a;
@@ -125,7 +135,7 @@ class Root extends React.Component {
 			return (
 				<div id="modal">
 					<div id="modal-title">
-						<h2>Welcome to Scalar</h2>
+						<h2>Welcome to Scaler</h2>
 						<button id="close-modal" onClick={this.toggleModal}>
 							<i
 								id="pattern-left"
@@ -198,7 +208,7 @@ class Root extends React.Component {
 				{this.renderInstructions()}
 				<span className="title">
 					<span id="title-author">
-						<h1>Scalar</h1>
+						<h1>Scaler</h1>
 						<p>by Sean O'Reilly</p>
 					</span>
 					<div id="links">
@@ -212,7 +222,7 @@ class Root extends React.Component {
 								aria-hidden="true"
 							/>
 						</button>
-						<a href="https://github.com/seanjams/Scalar">
+						<a href="https://github.com/seanjams/scaler">
 							<i
 								id="github-icon"
 								className="fa fa-github-square"
